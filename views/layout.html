@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/css/default.css">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="preload">
+        <div class="loader">
+            <div class="ball-scale-multiple">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div id="app">
+        {% block page %}{% endblock %}
+    </div>
+    <footer>
+        &copy;2016 xie jie. All rights reserved.
+    </footer>
+    <script src="/js/lib/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    {% block foot %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block title %}主页{% endblock %}
+
+{% block head %}
+    <script>
+        window.onload = function () {
+            document.querySelector('form').addEventListener('submit', (e) => {
+                var city = document.querySelector('[name=city]').value;
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState === 4) {
+                        console.log(xhr.responseText);
+                    }
+                };
+                xhr.open('post', '/test', true);
+                xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");
+                xhr.send(`r=${Math.random()}&city=${city}`);
+            });
+        };
+    </script>
+{% endblock %}
+
+{% block page %}
+    <!-- <div class="load-icon"></div> -->
+    <section class="content">
+        <div class="head">
+            <h1 class="title">{{ data.results[0].currentCity }}</h1>
+            <form action="" method="post" onsubmit="return false;">
+                <input type="text" name="city">
+                <input type="submit" value="查询">
+            </form>
+        </div>
+        <!-- <code>{{ data.toString() }}</code> -->
+        <div class="weather-box">
+            {% for detail in data.results[0].weather_data %}
+                <div class="box">
+                    <p>{{ detail.date.slice(0, 2) }}</p>
+                    <img src="{{ detail.dayPictureUrl }}" alt="">
+                    <p>{{ detail.weather }}</p>
+                    <p>{{ detail.wind }}</p>
+                    <p>{{ detail.temperature }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <p class="time">耗时：{{ time }}ms</p>
+        <article>
+            <h1>{{ article.title }}</h1>
+            <section>
+                {{ article.body }}
+            </section>
+            <p class="tags">
+                {% for tag in article.tags %}
+                    <a href="">#{{ tag }}</a>
+                {% endfor %}
+            </p>
+            <div class="info">
+                <p class="date">{{ article.date.getFullYear() }}.{{ article.date.getMonth() }}.{{ article.date.getDate() }}</p>
+                <p class="count">浏览：{{ article.viewCount }}</p>
+            </div>
+        </article>
+    </section>
+{% endblock %}
