@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { FlatButton } from 'material-ui'
-import NavigateBefore from 'material-ui/lib/svg-icons/image/navigate-before'
-import NavigateNext from 'material-ui/lib/svg-icons/image/navigate-next'
-import { lightBlue500 } from 'material-ui/lib/styles/colors'
+import FlatButton from 'material-ui/FlatButton'
+import NavigateBefore from 'material-ui/svg-icons/image/navigate-before'
+import NavigateNext from 'material-ui/svg-icons/image/navigate-next'
+import { lightBlue500 } from 'material-ui/styles/colors'
 
 const spanStyle = {
   display: 'inline-block',

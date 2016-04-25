@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import ArrowRight from 'material-ui/lib/svg-icons/hardware/keyboard-arrow-right'
+import ArrowRight from 'material-ui/svg-icons/hardware/keyboard-arrow-right'
 
 class Li extends Component {
   render() {

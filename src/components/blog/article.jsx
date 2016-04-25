@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import Bookmark from 'material-ui/lib/svg-icons/action/bookmark'
+import Bookmark from 'material-ui/svg-icons/action/bookmark'
 import { Meta } from './brief'
 
 class Tags extends Component {

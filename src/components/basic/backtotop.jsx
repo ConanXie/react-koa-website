@@ -1,7 +1,7 @@
 import $ from 'jquery'
 import React, { Component } from 'react'
-import { FloatingActionButton } from 'material-ui'
-import ArrowUp from 'material-ui/lib/svg-icons/hardware/keyboard-arrow-up'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up'
 
 
 class BackToTop extends Component {

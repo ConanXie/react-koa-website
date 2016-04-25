@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { RaisedButton, AppBar, Paper } from 'material-ui'
-import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider'
-import getMuiTheme from 'material-ui/lib/styles/getMuiTheme'
+import RaisedButton from 'material-ui/RaisedButton'
+import AppBar from 'material-ui/AppBar'
+import Paper from 'material-ui/Paper'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 import Head from './basic/head'
 import Login from './basic/login'

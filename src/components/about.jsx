@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
-import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider'
-import getMuiTheme from 'material-ui/lib/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 const muiTheme = getMuiTheme(null, {userAgent: 'all'})
 

@@ -1,8 +1,8 @@
 import $ from 'jquery'
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { Paper } from 'material-ui'
-import { lightBlue500 } from 'material-ui/lib/styles/colors'
+import Paper from 'material-ui/Paper'
+import { lightBlue500 } from 'material-ui/styles/colors'
 
 const style = {
   position: 'fixed',

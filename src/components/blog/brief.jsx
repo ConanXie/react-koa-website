@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import { RaisedButton } from 'material-ui'
-import ActionWatchLater from 'material-ui/lib/svg-icons/action/watch-later'
-import SocialPerson from 'material-ui/lib/svg-icons/social/person'
-import FileFolder from 'material-ui/lib/svg-icons/file/folder'
-import EditorModeComment from 'material-ui/lib/svg-icons/editor/mode-comment'
+import RaisedButton from 'material-ui/RaisedButton'
+import ActionWatchLater from 'material-ui/svg-icons/action/watch-later'
+import SocialPerson from 'material-ui/svg-icons/social/person'
+import FileFolder from 'material-ui/svg-icons/file/folder'
+import EditorModeComment from 'material-ui/svg-icons/editor/mode-comment'
 
 
 export class Meta extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import MuiThemeProvider from 'material-ui/lib/MuiThemeProvider'
-import getMuiTheme from 'material-ui/lib/styles/getMuiTheme'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import { Link } from 'react-router'
-import { RaisedButton } from 'material-ui'
+import RaisedButton from 'material-ui/RaisedButton'
 
 const muiTheme = getMuiTheme(null, {userAgent: 'all'})
 
