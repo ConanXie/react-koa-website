@@ -39,7 +39,7 @@ class Head extends Component {
               <div className="logo">{this.props.title}</div>
               <nav>
                 <ul>
-                  <li><Link to="/">主页</Link></li>
+                  <li><Link to="/">Home</Link></li>
                   <li><Link to="/blog">博客</Link></li>
                   <li><Link to="/profit">作品</Link></li>
                   <li><Link to="/about">关于</Link></li>
