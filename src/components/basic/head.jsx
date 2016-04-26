@@ -40,7 +40,7 @@ class Head extends Component {
               <nav>
                 <ul>
                   <li><Link to="/">Home</Link></li>
-                  <li><Link to="/blog">博客</Link></li>
+                  <li><Link to="/blog">博客(me)</Link></li>
                   <li><Link to="/profit">作品</Link></li>
                   <li><Link to="/about">关于</Link></li>
                   <li><Link to="/contact">联系</Link></li>
