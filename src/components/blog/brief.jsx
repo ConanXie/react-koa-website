@@ -17,7 +17,7 @@ export class Meta extends Component {
     const iconStyle = {
       width: '14px',
       height: '14px',
-      marginRight: '5px',
+      margin: '-2px 5px 0 0',
       verticalAlign: 'middle'
     }
     return (

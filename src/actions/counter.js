@@ -18,9 +18,7 @@ export function decrement() {
 // 奇数加一
 export function incrementIfOdd() {
   return (dispatch, getState) => {
-    const counter = getState()
-
-    if (counter % 2) {
+    if (getState().counter % 2) {
       dispatch(increment())
     }
   }
