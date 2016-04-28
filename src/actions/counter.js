@@ -48,10 +48,10 @@ export function getData() {
       },
       dataType: 'json',
       success: function (d) {
-        console.log(d)
+        // console.log(d)
         dispatch({
           type: GET_DATA,
-          value: `The user name is ${d.name}`
+          value: `The user name is ${d.name}. He said ${d.data}`
         })
       }
     })

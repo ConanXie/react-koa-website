@@ -29,28 +29,6 @@ import { createStore, bindActionCreators, combineReducers, applyMiddleware } fro
 import thunk from 'redux-thunk'
 import { Provider, connect } from 'react-redux'
 
-/*const initialState = {
-  text: 'conan'
-}
-function app(state = initialState, action) {
-  switch (action.type) {
-    case 'CHANGE_TEXT':
-      return {
-        text: state.text == 'conan' ? 'xiejie' : 'conan'
-      }
-    case 'BUTTON_CLICK':
-      return {
-        text: 'You just click the button.'
-      }
-    default:
-      return {
-        text: 'conan'
-      }
-  }
-}
-let store = createStore(app)
-console.log(store)*/
-
 import App from './containers/App'
 import reducer from './reducers/counter'
 let store = createStore(reducer, applyMiddleware(thunk))

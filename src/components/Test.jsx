@@ -21,7 +21,7 @@ class Counter extends Component {
         <button style={buttonStyle} onClick={incrementIfOdd}>Increment if odd</button>
         {' '}
         <button style={buttonStyle} onClick={() => {incrementAsync()}}>Increment async</button>
-        <p>{value}</p>
+        <h1>{value}</h1>
         <button style={buttonStyle} onClick={getData}>获取数据</button>
       </div>
     )
