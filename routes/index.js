@@ -36,4 +36,24 @@ router.get('404', async (ctx, next) => {
   })
 })
 
+var getData = () => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('haha')
+    }, 2000)
+  })
+}
+
+router.get('data', async (ctx, next) => {
+  console.log(ctx.query)
+  // let data = 'data from server side. 我是大神'
+  // ctx.body = data
+  // ctx.body = ctx.query
+  let data = await getData()
+  let query = ctx.query
+  query.data = data
+  console.log(query)
+  ctx.body = query
+})
+
 export default router
