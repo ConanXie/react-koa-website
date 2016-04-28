@@ -42,7 +42,7 @@ class Head extends Component {
                   <li><Link to="/">主页</Link></li>
                   <li><Link to="/blog">博客</Link></li>
                   <li><Link to="/profit">作品</Link></li>
-                  <li><Link to="/about">关于我们</Link></li>
+                  <li><Link to="/about">关于</Link></li>
                   <li><Link to="/contact">联系</Link></li>
                 </ul>
               </nav>
