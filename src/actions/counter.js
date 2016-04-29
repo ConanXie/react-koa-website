@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch'
+
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER'
 export const DECREMENT_COUNTER = 'DECREMENT_COUNTER'
 export const GET_DATA = 'GET_DATA'
@@ -40,20 +42,15 @@ export function incrementAsync(delay = 1000) {
 
 export function getData() {
   return (dispatch) => {
-    $.ajax({
-      url: 'data',
-      type: 'get',
-      data: {
-        name: 'conan'
-      },
-      dataType: 'json',
-      success: function (d) {
-        // console.log(d)
+    fetch('data?name=conan')
+      .then((res) => {
+        return res.json()
+      })
+      .then((data) => {
         dispatch({
           type: GET_DATA,
-          value: `The user name is ${d.name}. He said ${d.data}`
+          value: `The user name is ${data.name}. He said ${data.data}`
         })
-      }
-    })
+      })
   }
 }
