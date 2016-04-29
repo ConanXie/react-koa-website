@@ -42,15 +42,16 @@ export function incrementAsync(delay = 1000) {
 
 export function getData() {
   return (dispatch) => {
-    fetch('data?name=conan')
-      .then((res) => {
-        return res.json()
+    fetch('data', {
+      method: 'post',
+      body: 'name=conan&author=谢杰'
+    }).then((res) => {
+      return res.json()
+    }).then((data) => {
+      dispatch({
+        type: GET_DATA,
+        value: `The user name is ${data.name}. He said ${data.data}. The author is ${data.author}`
       })
-      .then((data) => {
-        dispatch({
-          type: GET_DATA,
-          value: `The user name is ${data.name}. He said ${data.data}`
-        })
-      })
+    })
   }
 }
