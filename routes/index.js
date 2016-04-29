@@ -6,6 +6,8 @@ import { renderToString } from 'react-dom/server'
 
 import Index from '../src/components/index'
 import Root from '../src/components/root'
+import Blog from '../src/components/blog'
+import BlogList from '../src/components/blog/list'
 import About from '../src/components/about'
 import NotFound from '../src/components/404'
 
@@ -26,7 +28,7 @@ router.get('/about', async (ctx, next) => {
 router.get(['blog', 'blog/list/:page', 'blog/detail/:id'], async (ctx, next) => {
   console.log(ctx.params)
   await ctx.render('index', {
-    root: renderToString(React.createFactory(Root)())
+    root: renderToString(React.createFactory(Root)(null, React.createFactory(Blog)(null, React.createFactory(BlogList)())))
   })
 })
 
@@ -44,10 +46,10 @@ var getData = () => {
   })
 }
 
-router.get('data', async (ctx, next) => {
+router.post('data', async (ctx, next) => {
   // let data = 'data from server side. 我是大神'
   // ctx.body = data
-  let query = ctx.query
+  let query = ctx.request.body
   let data = await getData()
   // ctx.body = Object.assign(ctx.query, {data: data})
   ctx.body = {
