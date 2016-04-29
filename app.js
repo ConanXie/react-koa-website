@@ -59,7 +59,7 @@ app.context.render = co.wrap(nunjucks({
 }))
 
 app.listen(4000, () => {
-  console.log('Listening on port 4000.')
+  console.log('Listening on 4000')
 })
 
 /*app.context.render = co.wrap(render(app, {
