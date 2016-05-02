@@ -44,13 +44,18 @@ export function getData() {
   return (dispatch) => {
     fetch('data', {
       method: 'post',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
       body: 'name=conan&author=谢杰'
     }).then((res) => {
       return res.json()
     }).then((data) => {
+      console.log(data)
       dispatch({
         type: GET_DATA,
-        value: `The user name is ${data.name}. He said ${data.data}. The author is ${data.author}`
+        value: `The user name is ${data.name}. He said ${data.data}. The author is ${data.author}`,
+        results: data.results
       })
     })
   }

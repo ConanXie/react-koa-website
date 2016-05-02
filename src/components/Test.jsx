@@ -8,8 +8,11 @@ const buttonStyle = {
   outline: 'none'
 }
 class Counter extends Component {
+  constructor(props) {
+    super(props)
+  }
   render() {
-    const { increment, incrementIfOdd, incrementAsync, decrement, counter, value, getData } = this.props
+    const { increment, incrementIfOdd, incrementAsync, decrement, counter, value, getData, results } = this.props
     return (
       <div>
         Clicked: {counter} times
@@ -20,9 +23,20 @@ class Counter extends Component {
         {' '}
         <button style={buttonStyle} onClick={incrementIfOdd}>Increment if odd</button>
         {' '}
-        <button style={buttonStyle} onClick={() => {incrementAsync()}}>Increment async</button>
+        <button style={buttonStyle} onClick={() => { incrementAsync() } }>Increment async</button>
         <h1>{value}</h1>
         <button style={buttonStyle} onClick={getData}>获取数据</button>
+        <ul>
+          {results.map((result) => {
+            return (
+              <li key={result.date}>
+                <h3>{result.title}</h3>
+                <p>{result.date}</p>
+                <div>{result.body}</div>
+              </li>
+            )
+          })}
+        </ul>
       </div>
     )
   }
@@ -34,13 +48,14 @@ Counter.propTypes = {
   decrement: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,
   value: PropTypes.string.isRequired,
-  getData: PropTypes.func.isRequired
+  getData: PropTypes.func.isRequired,
+  results: PropTypes.array.isRequired
 }
 
 class Test extends Component {
   render() {
     return (
-        <Counter />
+      <Counter />
     )
   }
 }
