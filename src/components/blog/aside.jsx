@@ -39,7 +39,7 @@ class RecentPosts extends Component {
             <time className="post-date">September 15, 2014</time>
           </Li>
           <Li>
-            <Link to="">John Snow is dead</Link>
+            <Link to="">Jon Snow has resurrected</Link>
             <time className="post-date">September 15, 2014</time>
           </Li>
           <Li>
