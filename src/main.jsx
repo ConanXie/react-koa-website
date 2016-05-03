@@ -25,7 +25,7 @@ browserHistory.listen((location) => {
 injectTapEventPlugin()
 
 
-import { createStore, bindActionCreators, combineReducers, applyMiddleware } from 'redux'
+import { createStore, bindActionCreators, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider, connect } from 'react-redux'
 
@@ -34,7 +34,10 @@ import reducer from './reducers/counter'
 
 const initialState = window.initialState
 
-let store = createStore(reducer, initialState, applyMiddleware(thunk))
+let store = createStore(reducer, initialState, compose(
+  applyMiddleware(thunk),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
+))
 
 
 if (window !== 'undefind') {
