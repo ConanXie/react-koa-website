@@ -31,7 +31,10 @@ import { Provider, connect } from 'react-redux'
 
 import App from './containers/App'
 import reducer from './reducers/counter'
-let store = createStore(reducer, applyMiddleware(thunk))
+
+const initialState = window.initialState
+
+let store = createStore(reducer, initialState, applyMiddleware(thunk))
 
 
 if (window !== 'undefind') {

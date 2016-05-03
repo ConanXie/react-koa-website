@@ -22,12 +22,17 @@ import reducer from '../src/reducers/counter'
 const router = koaRouter()
 
 router.get('/', async (ctx, next) => {
-  let store = createStore(reducer, applyMiddleware(thunk))
   let articles = await getArticles()
+  let store = createStore(reducer, {
+    counter: 100,
+    value: 'haha',
+    results: articles
+  }, applyMiddleware(thunk))
+  console.log(store.getState())
   await ctx.render('index', {
     // root: renderToString(React.createFactory(Root)(null, React.createFactory(App)()))
     root: renderToString(<Provider store={store}><App /></Provider>),
-    initialState: store.getState()
+    initialState: JSON.stringify(store.getState())
   })
 })
 

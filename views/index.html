@@ -3,9 +3,12 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block page %}
-    <div>{{ root }}</div>
+  <div>{{ root }}</div>
 {% endblock %}
 
 {% block foot %}
-    <script src="/bundle.js"></script>
+  <script>
+    window.initialState = {{ initialState }}
+  </script>
+  <script src="/bundle.js"></script>
 {% endblock %}

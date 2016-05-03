@@ -8,9 +8,6 @@ const buttonStyle = {
   outline: 'none'
 }
 class Counter extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     const { increment, incrementIfOdd, incrementAsync, decrement, counter, value, getData, results } = this.props
     return (
@@ -52,11 +49,4 @@ Counter.propTypes = {
   results: PropTypes.array.isRequired
 }
 
-class Test extends Component {
-  render() {
-    return (
-      <Counter />
-    )
-  }
-}
 export default Counter
