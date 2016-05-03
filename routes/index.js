@@ -8,7 +8,7 @@ import fs from 'fs'
 
 import Index from '../src/components/index'
 import Root from '../src/components/root'
-import App from '../src/containers/app'
+import App from '../src/containers/App'
 import Blog from '../src/components/blog'
 import BlogList from '../src/components/blog/list'
 import About from '../src/components/about'
