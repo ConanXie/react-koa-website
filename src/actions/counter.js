@@ -51,7 +51,6 @@ export function getData() {
     }).then((res) => {
       return res.json()
     }).then((data) => {
-      console.log(data)
       dispatch({
         type: GET_DATA,
         value: `The user name is ${data.name}. He said ${data.data}. The author is ${data.author}`,
