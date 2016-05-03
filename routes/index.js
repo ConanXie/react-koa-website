@@ -28,10 +28,9 @@ router.get('/', async (ctx, next) => {
     value: 'haha',
     results: articles
   }, applyMiddleware(thunk))
-  console.log(store.getState())
   await ctx.render('index', {
     // root: renderToString(React.createFactory(Root)(null, React.createFactory(App)()))
-    root: renderToString(<Provider store={store}><App /></Provider>),
+    root: renderToString(<Provider store={store}><Root><App /></Root></Provider>),
     initialState: JSON.stringify(store.getState())
   })
 })

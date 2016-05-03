@@ -32,9 +32,7 @@ import { Provider, connect } from 'react-redux'
 import App from './containers/App'
 import reducer from './reducers/counter'
 
-const initialState = window.initialState
-
-let store = createStore(reducer, initialState, compose(
+let store = createStore(reducer, window.__INITIAL_STATE__, compose(
   applyMiddleware(thunk),
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ))
