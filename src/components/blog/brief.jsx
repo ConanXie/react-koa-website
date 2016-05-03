@@ -40,7 +40,7 @@ class Brief extends Component {
   render() {
     return (
       <div className="blog-brief">
-          <a href="https://www.google.com.hk">
+          <a href="https://www.google.com">
             <img src="/images/googlelogo_color_272x92dp.png" alt=""/>
           </a>
           <div className="brief-body">
