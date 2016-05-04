@@ -1,15 +1,18 @@
 'use strict'
 
 import koaRouter from 'koa-router'
-import React from 'react'
-import { renderToString } from 'react-dom/server'
-import { match, RoutingContext } from 'react-router'
 import request from 'request'
 import fs from 'fs'
+const router = koaRouter()
+
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import { match, RouterContext } from 'react-router'
 
 import { createStore, bindActionCreators, combineReducers, applyMiddleware } from 'redux'
-import { Provider, connect } from 'react-redux'
+import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
+
 import reducer from '../src/reducers/counter'
 
 /**
@@ -23,11 +26,10 @@ import BlogList from '../src/components/blog/list'
 import About from '../src/components/about'
 import NotFound from '../src/components/404'
 
-const router = koaRouter()
-// import routes from 'src/main'
+import routes from '../src/routes'
 
 router.get('/', async (ctx, next) => {
-  /*let articles = await getArticles()
+  let articles = await getArticles()
   let store = createStore(reducer, {
     counter: 100,
     value: 'haha',
@@ -41,31 +43,17 @@ router.get('/', async (ctx, next) => {
     } else if (renderProps) {
       ctx.status = 200
       
-      await ctx.render('index', {
-        root: renderToString(<RoutingContext {...renderProps} />),
+      ctx.render('index', {
+        root: renderToString(
+          <Provider store={store}>
+            <RouterContext {...renderProps} />
+          </Provider>
+        ),
         initialState: JSON.stringify(store.getState())
       })
     } else {
       ctx.status = 404
     }
-  })*/
-  console.log(ctx.url)
-  let articles = await getArticles()
-  let store = createStore(reducer, {
-    counter: 100,
-    value: 'haha',
-    results: articles
-  }, applyMiddleware(thunk))
-  
-  await ctx.render('index', {
-    root: renderToString(
-      <Provider store={store}>
-        <Root>
-          <App />
-        </Root>
-      </Provider>
-    ),
-    initialState: JSON.stringify(store.getState())
   })
 })
 
