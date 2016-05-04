@@ -32,10 +32,18 @@ import { Provider, connect } from 'react-redux'
 import App from './containers/App'
 import reducer from './reducers/counter'
 
-let store = createStore(reducer, window.__INITIAL_STATE__, compose(
-  applyMiddleware(thunk),
-  window.devToolsExtension ? window.devToolsExtension() : f => f
-))
+let store = {}
+if (window.__INITIAL_STATE__) {
+  store = createStore(reducer, window.__INITIAL_STATE__, compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  ))
+} else {
+  store = createStore(reducer, compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f
+  ))
+}
 
 
 if (window !== 'undefind') {

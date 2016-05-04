@@ -8,7 +8,7 @@
 
 {% block foot %}
   <script>
-    window.__INITIAL_STATE__ = {{ initialState }}
+    window.__INITIAL_STATE__ = {{ initialState if initialState else 'null' }}
   </script>
   <script src="/bundle.js"></script>
 {% endblock %}
