@@ -45,23 +45,25 @@ if (window.__INITIAL_STATE__) {
   ))
 }
 
-
+export const routes = (
+  <Router history={browserHistory}>
+    <Route path="/" component={Root}>
+      <IndexRoute component={App} />
+      <Route path="blog" component={Blog}>
+        <IndexRoute component={BlogList} />
+        <Route path="page/:page" component={BlogList} />
+        <Route path="detail/:id" component={BlogDetail} />
+      </Route>
+      <Route path="about" component={About} />
+      <Route path="data" component={About} />
+    </Route>
+    <Route path="*" component={NotFound}/>
+  </Router>
+)
 if (window !== 'undefind') {
   render((
     <Provider store={store}>
-      <Router history={browserHistory}>
-        <Route path="/" component={Root}>
-          <IndexRoute component={App} />
-          <Route path="blog" component={Blog}>
-            <IndexRoute component={BlogList} />
-            <Route path="page/:page" component={BlogList} />
-            <Route path="detail/:id" component={BlogDetail} />
-          </Route>
-          <Route path="about" component={About} />
-          <Route path="data" component={About} />
-        </Route>
-        <Route path="*" component={NotFound}/>
-      </Router>
+      {routes}
     </Provider>
   ), document.querySelector('#app'))
 }
