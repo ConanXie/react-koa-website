@@ -35,25 +35,16 @@ router.get('/', async (ctx, next) => {
     value: 'haha',
     results: articles
   }, applyMiddleware(thunk))
+  
   match({ routes, location: ctx.url }, (error, redirectLocation, renderProps) => {
-    if (error) {
-      ctx.status = 500
-    } else if (redirectLocation) {
-      
-    } else if (renderProps) {
-      ctx.status = 200
-      
-      ctx.render('index', {
-        root: renderToString(
-          <Provider store={store}>
-            <RouterContext {...renderProps} />
-          </Provider>
-        ),
-        initialState: JSON.stringify(store.getState())
-      })
-    } else {
-      ctx.status = 404
-    }
+    ctx.render('index', {
+      root: renderToString(
+        <Provider store={store}>
+          <RouterContext {...renderProps} />
+        </Provider>
+      ),
+      initialState: JSON.stringify(store.getState())
+    })
   })
 })
 
