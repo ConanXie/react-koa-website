@@ -20,11 +20,10 @@ export default function counter(state = initialState, action) {
         value: action.value
       }
     case GET_DATA:
-      console.log([...state.results, action.results])
       return {
         ...state,
         value: action.value,
-        results: [...state.results, ...action.results]
+        results: [...action.results]
       }
     default:
       return state
