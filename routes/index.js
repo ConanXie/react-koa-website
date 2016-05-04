@@ -1,6 +1,7 @@
 'use strict'
 
 import koaRouter from 'koa-router'
+import React from 'react'
 import { renderToString } from 'react-dom/server'
 import request from 'request'
 import fs from 'fs'
