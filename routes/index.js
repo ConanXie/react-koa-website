@@ -28,14 +28,7 @@ import NotFound from '../src/components/404'
 
 import routes from '../src/routes'
 
-router.get('/', async (ctx, next) => {
-  let articles = await getArticles()
-  let store = createStore(reducer, {
-    counter: 100,
-    value: 'haha',
-    results: articles
-  }, applyMiddleware(thunk))
-  
+const matchRoutes = (ctx, store) => {
   match({ routes, location: ctx.url }, (error, redirectLocation, renderProps) => {
     ctx.render('index', {
       root: renderToString(
@@ -46,25 +39,34 @@ router.get('/', async (ctx, next) => {
       initialState: JSON.stringify(store.getState())
     })
   })
+}
+
+router.get('/', async (ctx, next) => {
+  let articles = await getArticles()
+  let store = createStore(reducer, {
+    counter: 100,
+    value: 'haha',
+    results: articles
+  }, applyMiddleware(thunk))
+  
+  matchRoutes(ctx, store)
 })
 
-router.get('/about', async (ctx, next) => {
+router.get('about', async (ctx, next) => {
   await ctx.render('index', {
     root: renderToString(<About />)
   })
 })
 
 router.get(['blog', 'blog/list/:page', 'blog/detail/:id'], async (ctx, next) => {
-  console.log(ctx.url)
-  await ctx.render('index', {
-    root: renderToString(
-      <Root>
-        <Blog>
-          <BlogList />
-        </Blog>
-      </Root>
-    )
-  })
+  let articles = await getArticles()
+  let store = createStore(reducer, {
+    counter: 100,
+    value: 'haha',
+    results: articles
+  }, applyMiddleware(thunk))
+  
+  matchRoutes(ctx, store)
 })
 
 router.get('404', async (ctx, next) => {
@@ -75,9 +77,9 @@ router.get('404', async (ctx, next) => {
 
 var getData = () => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
+    // setTimeout(() => {
       resolve('haha')
-    }, 1000)
+    // }, 1000)
   })
 }
 
@@ -93,15 +95,28 @@ var getArticles = () => {
   })
 }
 
-router.post('data', async (ctx, next) => {
+router.post('/', async (ctx, next) => {
   let query = ctx.request.body
   let data = await getData()
   let articles = await getArticles()
   ctx.body = {
+    counter: 100,
+    value: 'init',
     ...query,
     data: data,
     results: articles
   }
 })
+
+router.post('blog', async (ctx, next) => {
+  ctx.body = {
+    blog: 'blog'
+  }
+})
+/*router.post('profit', async (ctx, next) => {
+  ctx.body = {
+    blog: 'profit'
+  }
+})*/
 
 export default router
