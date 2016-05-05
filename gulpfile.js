@@ -44,16 +44,16 @@ gulp.task('default', ['less', 'sync'])
 /**
  * 压缩js，转es2015
  */
-
+// require('babel-polyfill')
 require('babel-core/register')({
-  presets: ['es2015', 'react']
+  presets: ['es2015']
 })
 
 gulp.task('script', () => {
   gulp.src('static/bundle.js')
     .pipe(plumber())
     .pipe(babel({ presets: ['es2015'] }))
-    .pipe(uglify({ mangle: false }))
+    // .pipe(uglify({ mangle: false }))
     .pipe(concat('bundle.min.js'))
     .pipe(gulp.dest('./static'))
 })

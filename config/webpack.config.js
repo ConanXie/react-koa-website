@@ -6,9 +6,11 @@ const dir_src = path.resolve(__dirname, '../src')
 const buildPath = path.resolve(__dirname, '../static')
 const publicPath = 'http://localhost:4000/'
 
+
 module.exports = {
   entry: [
     'webpack-hot-middleware/client?reload=true',
+    'babel-polyfill',
     path.resolve(dir_src, 'main.jsx')
   ],
   resolve: {
@@ -28,7 +30,8 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        presets: ['es2016-node5', 'react', 'stage-0']
+        presets: ['es2016-node5', 'react', 'stage-0'],
+        plugins: ['syntax-async-functions', 'transform-regenerator']
       }
     }]
   },
