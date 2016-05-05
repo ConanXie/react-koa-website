@@ -16,25 +16,6 @@ const webpackConfig = require('./config/webpack.config')
 const compiler = webpack(webpackConfig)
 
 /**
- * 路由
- */
-import index from './routes/index'
-// import test from './routes/test'
-router.use('/', index.routes())
-// router.use('/test', test.routes())
-
-/**
- * [404页面]
- */
-app.use(async (ctx, next) => {
-  await next()
-  if (ctx.status !== 404) return
-  ctx.status = 404
-  ctx.redirect('/404')
-  // ctx.render('404')
-})
-
-/**
  * 中间件
  */
 app.use(bodyparser())
@@ -57,6 +38,24 @@ app.context.render = co.wrap(nunjucks({
     autoescape: false
   }
 }))
+
+/**
+ * [404页面]
+ */
+app.use(async (ctx, next) => {
+  await next()
+  if (ctx.status !== 404) return
+  ctx.status = 404
+  ctx.redirect('/404')
+})
+
+/**
+ * 路由
+ */
+import index from './routes/index'
+// import test from './routes/test'
+router.use('/', index.routes())
+// router.use('/test', test.routes())
 
 app.listen(4000, () => {
   console.log('Listening on 4000')
