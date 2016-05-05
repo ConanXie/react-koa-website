@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { render } from 'react-dom'
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute, Redirect, browserHistory } from 'react-router'
 
 import Root from './components/root'
 import Index from './components/index'
@@ -34,7 +34,8 @@ const routes = (
       <Route path="about" component={About} />
       <Route path="data" component={About} />
     </Route>
-    <Route path="*" component={NotFound}/>
+    <Route path="404" component={NotFound} />
+    <Redirect from="*" to="/404" />
   </Router>
 )
 
