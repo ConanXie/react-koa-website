@@ -10,7 +10,6 @@ const publicPath = 'http://localhost:4000/'
 module.exports = {
   entry: [
     'webpack-hot-middleware/client?reload=true',
-    'babel-polyfill',
     path.resolve(dir_src, 'main.jsx')
   ],
   resolve: {
@@ -26,21 +25,15 @@ module.exports = {
   },
   module: {
     loaders: [{
-      test: /src(\\|\/).+\.jsx?$/,
+      test: /src(\\|\/).+(\.jsx|\.js)?$/,
       exclude: /node_modules/,
       loader: 'babel',
       query: {
-        presets: ['es2016-node5', 'react', 'stage-0'],
-        plugins: ['syntax-async-functions', 'transform-regenerator']
+        presets: ['es2016-node5', 'react', 'stage-0']
       }
     }]
   },
   plugins: [
-    /*new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    }),*/
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
@@ -48,5 +41,5 @@ module.exports = {
   stats: {
     colors: true
   },
-  devtool: 'source-map'
+  devtool: 'eval-source-map'
 }
