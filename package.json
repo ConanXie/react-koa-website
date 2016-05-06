@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index",
-    "build": "webpack --config config/webpack.config.js",
+    "build": "webpack -p --config config/webpack.production.config.js",
     "watch": "webpack-dev-server --config config/webpack.config.js --hot --inline --progress --colors"
   },
   "author": "Xie Jie",
