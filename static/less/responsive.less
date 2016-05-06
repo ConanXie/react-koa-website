@@ -1,3 +1,52 @@
 @media (max-width: 1279px) {
   
 }
+@media (min-width: 901px) {
+  #app {
+    & > div {
+      padding-top: 180px;
+    }
+    .bottom {
+      .nav-bar {
+        .menu-btn {
+          display: none!important;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 900px) {
+  #app {
+    & > div {
+      padding-top: 100px;
+    }
+    header {
+      .subheader {
+        padding: 0 15px;
+      }
+      .subheader.top {
+        display: none;
+      }
+      .bottom {
+        .nav-bar {
+          height: 48px;
+          transition: 0.3s;
+          .menu-btn {
+            float: left;
+            margin-left: -13px;
+            // display: inline-block;
+          }
+          .logo {
+            float: right;
+            height: 48px;
+            line-height: 48px;
+            font-size: 22px;
+          }
+          nav {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
