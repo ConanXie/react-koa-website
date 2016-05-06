@@ -16,7 +16,7 @@ class Root extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={{paddingTop: '180px'}}>
+        <div>
           <Head title="conan" />
           <Login />
           <BackToTop />
