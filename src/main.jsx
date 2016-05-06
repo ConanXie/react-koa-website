@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import $ from 'jquery'
 import { render } from 'react-dom'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 //Needed for onTouchTap
