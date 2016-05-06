@@ -2,6 +2,10 @@ import $ from 'jquery'
 import React, { Component } from 'react'
 import { Link } from 'react-router'
 import Paper from 'material-ui/Paper'
+import IconButton from 'material-ui/IconButton'
+import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
+import Drawer from 'material-ui/Drawer'
+import MenuItem from 'material-ui/MenuItem'
 import { lightBlue500 } from 'material-ui/styles/colors'
 
 const style = {
@@ -18,13 +22,29 @@ class Head extends Component {
   handleLogin(e) {
     $('#form-wrap').fadeIn()
   }
+  handleToggle = () => {
+    this.setState({
+      open: !this.state.open
+    })
+  }
+  handleClose = () => {
+    this.setState({
+      open: false
+    })
+  }
+  constructor(props) {
+    super(props)
+    this.state = {
+      open: false
+    }
+  }
   render() {
     let time = new Date()
     let hours = time.getHours()
     let minutes = time.getMinutes()
     hours = hours < 10 ? `0${hours}` : hours
     minutes = minutes < 10 ? `0${minutes}` : minutes
-
+    
     return (
       <Paper style={style} zDepth={1} rounded={false} id="header">
         <header>
@@ -36,6 +56,13 @@ class Head extends Component {
           </div>
           <div className="subheader bottom">
             <div className="nav-bar">
+              <IconButton className="menu-btn" onTouchTap={this.handleToggle}>
+                <NavigationMenu color="#ffffff" />
+              </IconButton>
+              <Drawer docked={false} width={270} open={this.state.open} onRequestChange={(open) => this.setState({open})}>
+                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>谢杰</MenuItem>
+                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>是大神</MenuItem>
+              </Drawer>
               <div className="logo">{this.props.title}</div>
               <nav>
                 <ul>
