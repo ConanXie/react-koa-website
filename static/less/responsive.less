@@ -1,6 +1,7 @@
 @media (max-width: 1279px) {
   
 }
+
 @media (min-width: 901px) {
   #app {
     & > div {
@@ -15,6 +16,7 @@
     }
   }
 }
+
 @media (max-width: 900px) {
   #app {
     & > div {
@@ -44,6 +46,73 @@
           }
           nav {
             display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 899px) {
+  #app {
+    .main {
+      padding: 0 20px 80px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  #app {
+    .main {
+      padding: 0 15px 80px;
+      .body {
+        section.content, aside {
+          float: none;
+          width: auto;
+        }
+        section.content {
+          .blog-brief {
+            h2 {
+              font-size: 25px;
+            }
+          }
+          .pagination {
+            margin-bottom: 70px;
+            .page-current-btn {}
+          }
+        }
+      }
+    }
+    .notfound-box {
+      h1 {
+        font-size: 160px!important;
+        span {
+          margin: 0 18px!important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 530px) {
+  #app {
+    .main {
+      .body {
+        section.content {
+          .pagination {
+            text-align: center;
+            a {
+              display: inline-block;
+            }
+            .page-before-btn {
+              float: left;
+            }
+            .page-next-btn {
+              float: right;
+            }
+            .page-center-btn {
+              display: none!important;
+            }
           }
         }
       }
