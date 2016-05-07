@@ -18,6 +18,13 @@ const style = {
   backgroundColor: lightBlue500
 }
 
+const menuLink = {
+  display: 'inline-block',
+  width: '100%',
+  height: '100%',
+  color: 'inherit'
+}
+
 class Head extends Component {
   handleLogin(e) {
     $('#form-wrap').fadeIn()
@@ -62,6 +69,31 @@ class Head extends Component {
               <Drawer docked={false} width={270} open={this.state.open} onRequestChange={(open) => this.setState({open})}>
                 <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>谢杰</MenuItem>
                 <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>是大神</MenuItem>
+                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
+                  <Link to="/" style={menuLink}>
+                    主页
+                  </Link>
+                </MenuItem>
+                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
+                  <Link to="/blog" style={menuLink}>
+                    博客
+                  </Link>
+                </MenuItem>
+                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
+                  <Link to="/profit" style={menuLink}>
+                    作品
+                  </Link>
+                </MenuItem>
+                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
+                  <Link to="/about" style={menuLink}>
+                    关于
+                  </Link>
+                </MenuItem>
+                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
+                  <Link to="/contact" style={menuLink}>
+                    联系
+                  </Link>
+                </MenuItem>
               </Drawer>
               <div className="logo">{this.props.title}</div>
               <nav>
