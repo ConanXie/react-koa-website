@@ -22,14 +22,13 @@ export class Meta extends Component {
     }
     return (
       <div className="meta">
-        <time style={spanStyle}><ActionWatchLater style={iconStyle} color="#9e9e9e" />September 15,
-        2014</time>
+        <time style={spanStyle}><ActionWatchLater style={iconStyle} color="#9e9e9e" />2016-05-05</time>
         {/*<span className="author" style={spanStyle}><SocialPerson style={iconStyle} color="#9e9e9e" />Xie Jie</span>*/}
         <Link to="">
           <span className="category" style={spanStyle}><FileFolder style={iconStyle} color="#9e9e9e" />website</span>
         </Link>
         <Link to="">
-          <span className="comments" style={spanStyle}><EditorModeComment style={iconStyle} color="#9e9e9e" />7 comments</span>
+          <span className="comments" style={spanStyle}><EditorModeComment style={iconStyle} color="#9e9e9e" />7 评论</span>
         </Link>
       </div>
     )
@@ -41,7 +40,7 @@ class Brief extends Component {
     return (
       <div className="blog-brief">
           <a href="https://www.google.com">
-            <img src="/images/googlelogo_color_272x92dp.png" alt=""/>
+            <img src="/images/googlelogo_color_272x92dp.png" alt="" />
           </a>
           <div className="brief-body">
             <h2><Link to="blog/detail/2">Google is a big company</Link></h2>
