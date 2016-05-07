@@ -10,6 +10,7 @@ const notFoundStyle = {
   position: 'absolute',
   top: '45%',
   left: '50%',
+  paddingTop: 0,
   WebkitTransform: 'translate(-50%, -50%)',
   transform: 'translate(-50%, -50%)',
   textAlign: 'center'
@@ -29,7 +30,7 @@ class NotFound extends Component {
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
-        <div style={notFoundStyle}>
+        <div style={notFoundStyle} className="notfound-box">
           <h1 style={h1Style}>4<span className="center" style={{margin: '0 30px'}}>0</span>4</h1>
           <p style={pStyle}>PAGE NOT FOUND</p>
           <Link to="/">
