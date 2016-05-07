@@ -51,34 +51,32 @@ class Pagination extends Component {
   render() {
     return (
       <div className="pagination">
-        <span style={currentStyle}>1</span>
-        <Link to="">
-          <FlatButton
-            label="2"
-            style={flatButtonStyle}
-          />
-        </Link>
-          <FlatButton
-            label="3"
-            style={flatButtonStyle}
-          />
-          <FlatButton
-            label="4"
-            style={flatButtonStyle}
-          />
-          <span style={spanStyle}>...</span>
-          <FlatButton
-            label="100"
-            style={flatButtonStyle}
-          />
-          <FlatButton
-            label={<NavigateNext style={navigateStyle} />}
-            style={flatButtonStyle}
-          />
+        <Link to="" className="page-before-btn">
           <FlatButton
             label={<NavigateBefore style={navigateStyle} />}
             style={flatButtonStyle}
           />
+        </Link>
+        <span style={currentStyle} className="page-current-btn">1</span>
+        <Link to="" className="page-center-btn">
+          <FlatButton label="2" style={flatButtonStyle} />
+        </Link>
+        <Link to="" className="page-center-btn">
+          <FlatButton label="3" style={flatButtonStyle} />
+        </Link>
+        <Link to="" className="page-center-btn">
+          <FlatButton label="4" style={flatButtonStyle} />
+        </Link>
+        <span style={spanStyle} className="page-center-btn">...</span>
+        <Link to="" className="page-center-btn">
+          <FlatButton label="100" style={flatButtonStyle} />
+        </Link>
+        <Link to="" className="page-next-btn">
+          <FlatButton
+            label={<NavigateNext style={navigateStyle} />}
+            style={flatButtonStyle}
+          />
+        </Link>
       </div>
     )
   }
