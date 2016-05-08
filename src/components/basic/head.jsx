@@ -66,9 +66,12 @@ class Head extends Component {
               <IconButton className="menu-btn" onTouchTap={this.handleToggle}>
                 <NavigationMenu color="#ffffff" />
               </IconButton>
-              <Drawer docked={false} width={270} open={this.state.open} onRequestChange={(open) => this.setState({open})}>
-                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>谢杰</MenuItem>
-                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>是大神</MenuItem>
+              <Drawer className="slide-menu" docked={false} width={270} open={this.state.open} onRequestChange={(open) => this.setState({open})}>
+                <div className="slide-menu-header">
+                  
+                </div>
+                {/*<MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>谢杰</MenuItem>*/}
+                {/*<MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>是大神</MenuItem>*/}
                 <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
                   <Link to="/" style={menuLink}>
                     主页
@@ -95,6 +98,7 @@ class Head extends Component {
                   </Link>
                 </MenuItem>
               </Drawer>
+              <div className="page-title">首页</div>
               <div className="logo">{this.props.title}</div>
               <nav>
                 <ul>
