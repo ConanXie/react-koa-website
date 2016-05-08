@@ -29,12 +29,12 @@ class Head extends Component {
   handleLogin(e) {
     $('#form-wrap').fadeIn()
   }
-  handleToggle = () => {
+  handleToggle() {
     this.setState({
       open: !this.state.open
     })
   }
-  handleClose = () => {
+  handleClose() {
     this.setState({
       open: false
     })
@@ -63,36 +63,36 @@ class Head extends Component {
           </div>
           <div className="subheader bottom">
             <div className="nav-bar">
-              <IconButton className="menu-btn" onTouchTap={this.handleToggle}>
+              <IconButton className="menu-btn" onTouchTap={e => this.handleToggle()}>
                 <NavigationMenu color="#ffffff" />
               </IconButton>
               <Drawer className="slide-menu" docked={false} width={270} open={this.state.open} onRequestChange={(open) => this.setState({open})}>
                 <div className="slide-menu-header">
                   
                 </div>
-                {/*<MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>谢杰</MenuItem>*/}
-                {/*<MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>是大神</MenuItem>*/}
-                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
+                {/*<MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>谢杰</MenuItem>*/}
+                {/*<MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>是大神</MenuItem>*/}
+                <MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>
                   <Link to="/" style={menuLink}>
                     主页
                   </Link>
                 </MenuItem>
-                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
+                <MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>
                   <Link to="/blog" style={menuLink}>
                     博客
                   </Link>
                 </MenuItem>
-                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
+                <MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>
                   <Link to="/profit" style={menuLink}>
                     作品
                   </Link>
                 </MenuItem>
-                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
+                <MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>
                   <Link to="/about" style={menuLink}>
                     关于
                   </Link>
                 </MenuItem>
-                <MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
+                <MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>
                   <Link to="/contact" style={menuLink}>
                     联系
                   </Link>

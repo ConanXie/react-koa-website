@@ -8,6 +8,11 @@ const buttonStyle = {
   outline: 'none'
 }
 class Counter extends Component {
+  handleClick(e) {
+    const node = this.refs.button
+    console.log(node)
+    this.props.getData()
+  }
   render() {
     const { increment, incrementIfOdd, incrementAsync, decrement, counter, value, getData, results } = this.props
     return (
@@ -20,9 +25,9 @@ class Counter extends Component {
         {' '}
         <button style={buttonStyle} onClick={incrementIfOdd}>Increment if odd</button>
         {' '}
-        <button style={buttonStyle} onClick={() => { incrementAsync() } }>Increment async</button>
+        <button style={buttonStyle} onClick={e => incrementAsync() }>Increment async</button>
         <h1>{value}</h1>
-        <button style={buttonStyle} onClick={getData}>获取数据</button>
+        <button style={buttonStyle} onClick={e => this.handleClick(e)} ref="button">获取数据</button>
         <ul>
           {results.map((result) => {
             return (
