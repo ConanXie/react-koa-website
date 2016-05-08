@@ -32,11 +32,18 @@
       .bottom {
         .nav-bar {
           height: 48px;
+          text-align: left;
           transition: 0.3s;
           .menu-btn {
             float: left;
             margin-left: -13px;
             // display: inline-block;
+          }
+          .page-title {
+            display: inline-block;
+            height: 48px;
+            line-height: 48px;
+            font-size: 20px;
           }
           .logo {
             float: right;
@@ -78,8 +85,18 @@
           }
           .pagination {
             margin-bottom: 70px;
-            .page-current-btn {}
+            // .page-current-btn {}
           }
+          .article {
+            .header {
+              h2 {
+                font-size: 25px;
+              }
+            }
+          }
+        }
+        section.tags {
+          margin-bottom: 40px;
         }
       }
     }

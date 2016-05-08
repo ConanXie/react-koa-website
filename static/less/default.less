@@ -143,6 +143,9 @@ header {
       margin: 0 auto;
       height: @nav-bar-height;
       .transition(height, 0.3s);
+      .page-title {
+        display: none;
+      }
       .logo {
         float: left;
         line-height: @nav-bar-height;
@@ -168,6 +171,14 @@ header {
               color: #fff;
             }
           }
+        }
+      }
+      .slide-menu {
+        .slide-menu-header {
+          height: 150px;
+          margin-bottom: 10px;
+          background: url(../images/slide-menu-header-bg.jpg) no-repeat;
+          background-size: 100%;
         }
       }
     }
@@ -259,6 +270,7 @@ aside {
   }
   .tags {
     a {
+      margin-right: 5px;
       color: @divider-color;
       .transition(color, 0.3s);
       &:hover {
