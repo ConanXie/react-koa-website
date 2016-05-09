@@ -1,4 +1,8 @@
 import React, { Component, PropTypes } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as CounterActions from '../actions/counter'
+
 const buttonStyle = {
   background: '#343434',
   color: '#fff',
@@ -54,4 +58,17 @@ Counter.propTypes = {
   results: PropTypes.array.isRequired
 }
 
-export default Counter
+const mapStateToProps = (state) => {
+  const { counter, value, results } = state
+  return {
+    counter,
+    value,
+    results
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(CounterActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter)

@@ -9,7 +9,7 @@ import BlogList from './components/blog/list'
 import BlogDetail from './components/blog/article'
 import About from './components/about'
 import NotFound from './components/404'
-import App from './containers/App'
+import Counter from './components/counter'
 
 if (typeof window !== 'undefined') {
   browserHistory.listen((location) => {
@@ -25,7 +25,7 @@ if (typeof window !== 'undefined') {
 const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={Root}>
-      <IndexRoute component={App} />
+      <IndexRoute component={Counter} />
       <Route path="blog" component={Blog}>
         <IndexRoute component={BlogList} />
         <Route path="page/:page" component={BlogList} />
