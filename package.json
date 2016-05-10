@@ -32,7 +32,7 @@
     "koa-static": "^2.0.0",
     "koa-views": "^4.1.0",
     "material-ui": "^0.15.0",
-    "mongoose": "^4.4.15",
+    "mongoose": "^4.4.16",
     "path": "^0.12.7",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
