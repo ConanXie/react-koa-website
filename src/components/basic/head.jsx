@@ -6,6 +6,12 @@ import IconButton from 'material-ui/IconButton'
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
 import Drawer from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
+import { ListItem } from 'material-ui/List'
+import ActionHome from 'material-ui/svg-icons/action/home'
+import EditorFormatListBulleted from 'material-ui/svg-icons/editor/format-list-bulleted'
+import ImageLandscape from 'material-ui/svg-icons/image/landscape'
+import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline'
+import CommunicationEmail from 'material-ui/svg-icons/communication/email'
 import { lightBlue500 } from 'material-ui/styles/colors'
 
 const style = {
@@ -29,12 +35,12 @@ class Head extends Component {
   handleLogin(e) {
     $('#form-wrap').fadeIn()
   }
-  handleToggle() {
+  handleToggle = () => {
     this.setState({
       open: !this.state.open
     })
   }
-  handleClose() {
+  handleClose = () => {
     this.setState({
       open: false
     })
@@ -63,40 +69,35 @@ class Head extends Component {
           </div>
           <div className="subheader bottom">
             <div className="nav-bar">
-              <IconButton className="menu-btn" onTouchTap={e => this.handleToggle()}>
+              <IconButton className="menu-btn" onTouchTap={this.handleToggle}>
                 <NavigationMenu color="#ffffff" />
               </IconButton>
               <Drawer className="slide-menu" docked={false} width={270} open={this.state.open} onRequestChange={(open) => this.setState({open})}>
                 <div className="slide-menu-header">
                   
                 </div>
-                {/*<MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>谢杰</MenuItem>*/}
-                {/*<MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>是大神</MenuItem>*/}
-                <MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>
+                {/*<MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>谢杰</MenuItem>*/}
+                {/*<MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>是大神</MenuItem>*/}
+                {/*<MenuItem onTouchTap={this.handleClose} style={{textAlign: 'left'}}>
                   <Link to="/" style={menuLink}>
                     主页
                   </Link>
-                </MenuItem>
-                <MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>
-                  <Link to="/blog" style={menuLink}>
-                    博客
-                  </Link>
-                </MenuItem>
-                <MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>
-                  <Link to="/profit" style={menuLink}>
-                    作品
-                  </Link>
-                </MenuItem>
-                <MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>
-                  <Link to="/about" style={menuLink}>
-                    关于
-                  </Link>
-                </MenuItem>
-                <MenuItem onTouchTap={e => this.handleClose()} style={{textAlign: 'left'}}>
-                  <Link to="/contact" style={menuLink}>
-                    联系
-                  </Link>
-                </MenuItem>
+                </MenuItem>*/}
+                <Link to="/">
+                  <MenuItem onTouchTap={this.handleClose} primaryText="主页" leftIcon={<ActionHome />} />
+                </Link>
+                <Link to="/blog">
+                  <MenuItem onTouchTap={this.handleClose} primaryText="博客" leftIcon={<EditorFormatListBulleted />} />
+                </Link>
+                <Link to="/profit">
+                  <MenuItem onTouchTap={this.handleClose} primaryText="作品" leftIcon={<ImageLandscape />} />
+                </Link>
+                <Link to="/about">
+                  <MenuItem onTouchTap={this.handleClose} primaryText="关于" leftIcon={<ActionInfoOutline />} />
+                </Link>
+                <Link to="/contact">
+                  <MenuItem onTouchTap={this.handleClose} primaryText="联系" leftIcon={<CommunicationEmail />} />
+                </Link>
               </Drawer>
               <div className="page-title">首页</div>
               <div className="logo">{this.props.title}</div>
