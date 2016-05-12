@@ -4,14 +4,14 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 //Needed for onTouchTap
 injectTapEventPlugin()
 
-import { createStore, bindActionCreators, combineReducers, applyMiddleware, compose } from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
-import { Provider, connect } from 'react-redux'
+import { Provider } from 'react-redux'
 
 import reducer from './reducers/counter'
 import routes from './routes'
 
-let store = {}
+let store
 if (window.__INITIAL_STATE__) {
   store = createStore(reducer, window.__INITIAL_STATE__, compose(
     applyMiddleware(thunk),
@@ -24,10 +24,8 @@ if (window.__INITIAL_STATE__) {
   ))
 }
 
-if (typeof window !== 'undefind') {
-  render((
-    <Provider store={store}>
-      {routes}
-    </Provider>
-  ), document.querySelector('#app'))
-}
+render((
+  <Provider store={store}>
+    {routes}
+  </Provider>
+), document.querySelector('#app'))
