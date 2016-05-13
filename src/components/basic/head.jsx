@@ -20,15 +20,7 @@ const style = {
   width: '100%',
   color: '#fff',
   textAlign: 'center',
-  fontFamily: 'Arial, 微软雅黑',
   backgroundColor: lightBlue500
-}
-
-const menuLink = {
-  display: 'inline-block',
-  width: '100%',
-  height: '100%',
-  color: 'inherit'
 }
 
 class Head extends Component {
