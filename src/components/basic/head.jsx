@@ -1,6 +1,7 @@
 import $ from 'jquery'
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
+
 import Paper from 'material-ui/Paper'
 import IconButton from 'material-ui/IconButton'
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
@@ -13,6 +14,10 @@ import ImageLandscape from 'material-ui/svg-icons/image/landscape'
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline'
 import CommunicationEmail from 'material-ui/svg-icons/communication/email'
 import { lightBlue500 } from 'material-ui/styles/colors'
+
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as BloglistActions from '../../actions/bloglist'
 
 const style = {
   position: 'fixed',
@@ -49,6 +54,8 @@ class Head extends Component {
     let minutes = time.getMinutes()
     hours = hours < 10 ? `0${hours}` : hours
     minutes = minutes < 10 ? `0${minutes}` : minutes
+    
+    const { blogList, list } = this.props
     
     return (
       <Paper style={style} zDepth={1} rounded={false} id="header">
@@ -96,7 +103,7 @@ class Head extends Component {
               <nav>
                 <ul>
                   <li><Link to="/">主页</Link></li>
-                  <li><Link to="/blog">博客</Link></li>
+                  <li onClick={e => blogList()}><Link to="/blog">博客</Link></li>
                   <li><Link to="/profit">作品</Link></li>
                   <li><Link to="/about">关于</Link></li>
                   <li><Link to="/contact">联系</Link></li>
@@ -109,5 +116,20 @@ class Head extends Component {
     )
   }
 }
+Head.propTypes = {
+  blogList: PropTypes.func.isRequired,
+  list: PropTypes.array.isRequired
+}
 
-export default Head
+const mapStateToProps = (state) => {
+  const { list } = state.bloglist
+  return {
+    list
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(BloglistActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Head)
