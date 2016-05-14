@@ -53,8 +53,10 @@ app.use(async (ctx, next) => {
  * 路由
  */
 import index from './routes/index'
+import api from './routes/api'
 // import test from './routes/test'
 router.use('/', index.routes())
+router.use('/api', api.routes())
 // router.use('/test', test.routes())
 
 app.listen(4000, () => {
