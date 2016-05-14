@@ -1,36 +1,41 @@
 [{
-  "date": 1461941623692,
-  "viewCount": 22,
-  "tags": ["dinary", "life", "work"],
-  "category": "Life",
-  "title": "Winter is coming",
-  "body": "<p>Jon Snow has resurrected</p>"
-}, {
-  "date": 1460464179000,
-  "viewCount": 23,
-  "tags": ["dinary", "life", "work"],
-  "category": "Life",
-  "title": "Winter is coming",
-  "body": "<p>Jon Snow has resurrected</p>"
-}, {
-  "date": 1459556366000,
-  "viewCount": 32,
-  "tags": ["dinary", "life", "work"],
-  "category": "Life",
-  "title": "Winter is coming",
-  "body": "<p>Jon Snow has resurrected</p>"
-}, {
-  "date": 1459142396000,
-  "viewCount": 56,
-  "tags": ["dinary", "life", "work"],
-  "category": "Life",
-  "title": "Winter is coming",
-  "body": "<p>Jon Snow has resurrected</p>"
-}, {
-  "date": 1458878963000,
+  "date": 1463356800000,
   "viewCount": 109,
-  "tags": ["dinary", "life", "work"],
+  "commentsNum": 9,
+  "tags": ["Content", "Prototyping"],
   "category": "Life",
-  "title": "Winter is coming",
-  "body": "<p>Jon Snow has resurrected</p>"
+  "title": "Content-First Prototyping",
+  "body": "<p>Content is the core commodity of the digital economy. It is the gold we fashion into luxury experience, the diamond we encase in loyalty programs and upsells. Yet, as designers, we often plug it in after the fact. We prototype our interaction and visual design to exhaustion, but accept that the “real words” can just be dropped in later. There is a better way.</p><p>More and more, the digital goods we create operate within a dynamic system of content, functionality, code and intent. Our products and services drift and spill into partner websites, social media feeds and myriad electronic aggregators, all seeking to shape visitor behavior and understanding. <strong>Systems build on systems</strong>, and, in short order, we’ve cobbled together a colossus the breadth of which sends minds a-boggling.</p><p>Though we’ve been pretty good at figuring out simple systems in the past (think static websites and intranets), it turns out that large dynamic systems are quite a bit more complicated — and quite a bit less predictable. As systems grow, they become exponentially more complex, and as they increase in complexity, their behavior becomes increasingly nonlinear and difficult for us, poor monkeys, to anticipate. In large systems, rounding errors at the thousandth decimal point can radically change outcomes. As the Internet approaches a trillion nodes, this is the world for which we all now design.</p><p>Those <strong>simple systems that we’re used to</strong>, however, can provide a key to designing for more complex spaces. As systems theorist <a href=\"https://en.wikipedia.org/wiki/John_Gall_(author)#Gall.27s_law\">John Gall puts it</a>, “A complex system that works is invariably found to have evolved from a simple system that works.” In the space of digital design, if we ensure that our simplest dynamic systems of content, structure and meaning-making work as intended at a foundational level, then we can lay the groundwork for larger, more complex systems that also work as intended.</p>"
+}, {
+  "date": 1462838400000,
+  "viewCount": 23,
+  "commentsNum": 12,
+  "tags": ["CSS", "Responsive Web Design", "Typography"],
+  "category": "Life",
+  "title": "Truly Fluid Typography With vh And vw Units",
+  "body": "<p>Embracing fluid typography might be easier than you think. It has wide browser support, is simple to implement and can be achieved without losing control over many important aspects of design.</p><p>Unlike responsive typography, which changes only at set breakpoints, <strong>fluid typography resizes smoothly</strong> to match any device width. It is an intuitive option for a web in which we have a practically infinite number of screen sizes to support. Yet, for some reason, it is still used far less than responsive techniques.</p><p>This might be because typography is so deeply rooted in the centuries-old history of typesetting. The concept of having “fluid” anything is often at odds with this tradition. In print, dimensions have always been fixed, but they don’t need to be on the web. That’s why I think fluid typography is a perfect match for the web. It’s a different approach for a completely different medium.</p><p>This doesn’t mean we need to throw out all conventions and everything we know about typography. We just need to <strong>learn how to apply the techniques we know</strong> in a slightly different way. Careful attention to detail will ensure we still have a perfectly crafted experience at all screen sizes.</p>"
+}, {
+  "date": 1462752000000,
+  "viewCount": 5,
+  "commentsNum": 52,
+  "tags": ["Illustrations", "Inspiration"],
+  "category": "Life",
+  "title": "Breaking Out Of The Box: Design Inspiration (May 2016)",
+  "body": "<p>Today we’ll be looking at eye candy that will undoubtedly help you start the new week with your creativity freshly nurtured. Grab your cup of coffee or tea, and let these designs shine on you with their smart details, fantastic textures, and well-chosen color palettes. </p><p>I’ve sifted through the web to dig up <strong>little nuggets of inspiration</strong> to indulge in — just for you. This time I’ve collected a potpourri of styles ranging from delicate and subtle to bold and playful. Nothing but design goodness. So please lean back and soak it all in.</p><h3>Sergey Brin</h3><p>Sergey Brin with his Google Glass. The beard is a nice touch with the dots. Love the vertical geometrical lines, and how these few straight and circular lines give this expression on his face.</p>"
+}, {
+  "date": 1461542400000,
+  "viewCount": 56,
+  "commentsNum": 31,
+  "tags": ["HTML5", "Videos"],
+  "category": "Life",
+  "title": "HTML5 Media Source Extensions: Bringing Production Video To The Web",
+  "body": "<p>In the last decade, plugins such as Flash and Silverlight have enabled a rich consumption of video in browsers, powering popular services such as YouTube and Netflix. However, this approach has shifted towards HTML5 over the last few years.</p><p>Almost two years ago, the W3C published the <a href=\"https://www.w3.org/TR/html5/\">final recommendation of the HTML5 spec</a>, which came with a new set of HTML elements and APIs, especially for video. Some of them aim for more semantics in web pages but don’t introduce new features.&nbsp;Others extend the possibilities of the web and enhance the possibilities for developers <strong>without the need for plugins</strong> such as Adobe Flash, Microsoft Silverlight or Java.</p><p>This is especially important because, for example,&nbsp;<a href=\"http://blog.chromium.org/2013/09/saying-goodbye-to-our-old-friend-npapi.html\">Google has announced</a> the removal of NPAPI&nbsp;(an API used by these plugins), as has <a href=\"https://blog.mozilla.org/futurereleases/2015/10/08/npapi-plugins-in-firefox/\">Firefox</a>, and <a href=\"http://msdn.microsoft.com/en-us/library/ie/hh968248.aspx\">Microsoft advocates for plugin-free browsing</a>. Although these vendors still provide a Flash player, it is probably only a matter of time before they don’t. Furthermore, browsers on mobile devices are a step beyond because most of them do not support plugins and have no Flash player.</p><p>Let’s look at some of the new HTML5 elements and what they improve for video:</p><ul><li><code>&lt;canvas&gt;</code>&nbsp;provides scripts to render graphs, game graphics and more. This is sometimes referred to as the Canvas JavaScript API. The <code>canvas</code> element can also be used with WebGL to render 2D and&nbsp;3D graphics, using the graphics card’s GPU.</li><li><code>&lt;video&gt;</code>&nbsp;enables out-of-the-box playback of video, which is really awesome. This finally makes plugin-free multimedia on the web a reality.&nbsp;In fact, browser vendors seem to agree on a single format —&nbsp;<a href=\"http://caniuse.com/#search=mp4\">MPEG-4/H.264</a>, which is universally supported in modern browsers, with a notable exception of Opera Mini.</li><li><code>&lt;audio&gt;</code>&nbsp;enables out-of-the-box playback of audio content on a web page. As with&nbsp;video, the decision of which container formats and codecs to support is left to browser vendors.</li><li><code>&lt;track&gt;</code>&nbsp;can be used for timed text tracks, such as subtitles and captions in a video. WebVTT files are supported out of the box.</li></ul><p>Most of the new elements have been known about and used for a while because they are implemented in all modern browsers. The specification is stable. Still, the W3C has a lot of work to do left.</p>"
+}, {
+  "date": 1461110400000,
+  "viewCount": 22,
+  "commentsNum": 89,
+  "tags": ["Techniques", "Tools"],
+  "category": "Life",
+  "title": "Why You Should Stop Installing Your WebDev Environment Locally",
+  "body": "<p>Have you heard of Docker but thought that it’s only for system administrators and other Linux geeks? Or have you looked into it and felt a bit intimidated by the jargon? Or are you <strong>silently suffering with a messy development environment</strong> that seems to break all of the time in various mysterious ways? Then read on. By the end of this article, you should have a basic understanding of Docker and have it working on your computer!</p><p>The first part of this article gives a bit of background to help you understand the concepts behind Docker through some metaphors. But if you just want to get started with the tutorial, skip to the <a href=\"#time-to-play\">“Time to Play!”</a> section.</p><h3>A Brief History Of The Shipping Industry </h3><h4>Break-Bulk Shipping</h4><p>The loading and unloading of individual goods in barrels, sacks and wooden crates from land transporters to ship, and back again on arrival, used to be slow and cumbersome. Nevertheless, this process, referred to as break-bulk shipping, was the only known way to transport goods via ship up until the second half of the 20th century.</p><p>Needless to say, this process was very labor-intensive. A ship could easily spend more time at port than at sea, as dockworkers moved cargo into and out of tight spaces below decks. There was also high risk of accident, loss and theft.</p>"
 }]
