@@ -82,19 +82,19 @@ class Head extends Component {
                     主页
                   </Link>
                 </MenuItem>*/}
-                <Link to="/">
+                <Link to="/" activeClassName="active">
                   <MenuItem onTouchTap={this.handleClose} primaryText="主页" leftIcon={<ActionHome />} />
                 </Link>
-                <Link to="/blog">
-                  <MenuItem onTouchTap={this.handleClose} primaryText="博客" leftIcon={<EditorFormatListBulleted />} />
+                <Link to="/blog" activeClassName="active">
+                  <MenuItem onTouchTap={this.handleClose} onClick={e => blogList()} primaryText="博客" leftIcon={<EditorFormatListBulleted />} />
                 </Link>
-                <Link to="/profit">
+                <Link to="/profit" activeClassName="active">
                   <MenuItem onTouchTap={this.handleClose} primaryText="作品" leftIcon={<ImageLandscape />} />
                 </Link>
-                <Link to="/about">
+                <Link to="/about" activeClassName="active">
                   <MenuItem onTouchTap={this.handleClose} primaryText="关于" leftIcon={<ActionInfoOutline />} />
                 </Link>
-                <Link to="/contact">
+                <Link to="/contact" activeClassName="active">
                   <MenuItem onTouchTap={this.handleClose} primaryText="联系" leftIcon={<CommunicationEmail />} />
                 </Link>
               </Drawer>
@@ -102,11 +102,11 @@ class Head extends Component {
               <div className="logo">{this.props.title}</div>
               <nav>
                 <ul>
-                  <li><Link to="/">主页</Link></li>
-                  <li onClick={e => blogList()}><Link to="/blog">博客</Link></li>
-                  <li><Link to="/profit">作品</Link></li>
-                  <li><Link to="/about">关于</Link></li>
-                  <li><Link to="/contact">联系</Link></li>
+                  <li><Link to="/" activeClassName="active">主页</Link></li>
+                  <li onClick={e => blogList()}><Link to="/blog" activeClassName="active">博客</Link></li>
+                  <li><Link to="/profit" activeClassName="active">作品</Link></li>
+                  <li><Link to="/about" activeClassName="active">关于</Link></li>
+                  <li><Link to="/contact" activeClassName="active">联系</Link></li>
                 </ul>
               </nav>
             </div>
