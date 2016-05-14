@@ -4,11 +4,11 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 //Needed for onTouchTap
 injectTapEventPlugin()
 
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 
-import reducer from './reducers/counter'
+import reducer from './reducers/index'
 import routes from './routes'
 
 let store
