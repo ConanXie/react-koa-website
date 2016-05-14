@@ -1,7 +1,7 @@
 import { INCREMENT_COUNTER, DECREMENT_COUNTER, GET_DATA } from '../actions/counter'
 
 const initialState = {
-  counter: 12,
+  count: 12,
   value: 'init',
   results: []
 }
@@ -10,13 +10,13 @@ export default function counter(state = initialState, action) {
     case INCREMENT_COUNTER:
       return {
         ...state,
-        counter: state.counter + 1,
+        count: state.count + 1,
         value: action.value
       }
     case DECREMENT_COUNTER:
       return {
         ...state,
-        counter: state.counter - 1,
+        count: state.count - 1,
         value: action.value
       }
     case GET_DATA:

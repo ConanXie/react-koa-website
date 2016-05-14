@@ -18,10 +18,10 @@ class Counter extends Component {
     this.props.getData()
   }
   render() {
-    const { increment, incrementIfOdd, incrementAsync, decrement, counter, value, getData, results } = this.props
+    const { increment, incrementIfOdd, incrementAsync, decrement, count, value, getData, results } = this.props
     return (
       <div>
-        Clicked: {counter} times
+        Clicked: {count} times
         {' '}
         <button style={buttonStyle} onClick={increment}>+</button>
         {' '}
@@ -32,7 +32,7 @@ class Counter extends Component {
         <button style={buttonStyle} onClick={e => incrementAsync() }>Increment async</button>
         <h1>{value}</h1>
         <button style={buttonStyle} onClick={e => this.handleClick(e)} ref="button">获取数据</button>
-        <ul>
+        {/*<ul>
           {results.map((result) => {
             return (
               <li key={result.date}>
@@ -42,7 +42,7 @@ class Counter extends Component {
               </li>
             )
           })}
-        </ul>
+        </ul>*/}
       </div>
     )
   }
@@ -52,16 +52,16 @@ Counter.propTypes = {
   incrementIfOdd: PropTypes.func.isRequired,
   incrementAsync: PropTypes.func.isRequired,
   decrement: PropTypes.func.isRequired,
-  counter: PropTypes.number.isRequired,
+  count: PropTypes.number.isRequired,
   value: PropTypes.string.isRequired,
   getData: PropTypes.func.isRequired,
   results: PropTypes.array.isRequired
 }
 
 const mapStateToProps = (state) => {
-  const { counter, value, results } = state
+  const { count, value, results } = state.counter
   return {
-    counter,
+    count,
     value,
     results
   }
