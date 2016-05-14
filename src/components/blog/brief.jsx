@@ -37,18 +37,16 @@ export class Meta extends Component {
 
 class Brief extends Component {
   render() {
+    const { data } = this.props
     return (
       <div className="blog-brief">
           <a href="https://www.google.com">
             <img src="/images/googlelogo_color_272x92dp.png" alt="" />
           </a>
           <div className="brief-body">
-            <h2><Link to="blog/detail/2">Google is a big company</Link></h2>
+            <h2><Link to="blog/detail/2">{data.title}</Link></h2>
             <Meta />
-            <div className="content">
-              <p>Google公司（Google Inc.），是一家美国的跨国科技企业，业务范围涵盖互联网搜索、云计算、广告技术等领域，开发并提供大量基于互联网的产品与服务，其主要利润来自于AdWords等广告服务。
-              </p>
-            </div>
+            <div className="content" dangerouslySetInnerHTML={{__html: data.body}}></div>
             <Link to="blog/detail/2">
               <RaisedButton
                 label="更多"
