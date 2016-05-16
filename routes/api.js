@@ -26,7 +26,7 @@ router.get('/bloglist/:page', async (ctx, next) => {
   } catch (e) {
     throw e
   }
-  ctx.res.writeHead(200, { 'Content-Type': 'text/json' })
+  ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
   ctx.body = data
 })
 
