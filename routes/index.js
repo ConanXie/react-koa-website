@@ -9,29 +9,20 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 import reducer from '../src/reducers/index'
 
-/**
- * components
- */
-import Index from '../src/components/index'
-import Root from '../src/components/root'
-import App from '../src/containers/App'
-import Blog from '../src/components/blog'
-import BlogList from '../src/components/blog/list'
-import About from '../src/components/about'
-import NotFound from '../src/components/404'
-
 import routes from '../src/routes'
 
 /**
- * 匹配react-router
+ * 生成服务器端store和匹配routes
  */
-const matchRoutes = (ctx, store) => {
+const storeAndRoutes = (ctx, state) => {
+  let store = createStore(reducer, state, applyMiddleware(thunk))
+  // 匹配react-router
   match({ routes, location: ctx.url }, (error, redirectLocation, renderProps) => {
     ctx.render('index', {
       root: renderToString(
@@ -43,42 +34,35 @@ const matchRoutes = (ctx, store) => {
     })
   })
 }
+/**
+ * api url
+ */
+const apiUrl = 'http://localhost:4000/api'
 
 router.get('/', async (ctx, next) => {
   let articles = await getArticles()
-  let store = createStore(reducer, {
-    counter: {
-      count: 100,
-      value: 'haha',
-      results: articles
-    }
-  }, applyMiddleware(thunk))
-  
-  matchRoutes(ctx, store)
+  let counter = {
+    count: 100,
+    value: 'haha',
+    results: articles
+  }
+  storeAndRoutes(ctx, { counter })
 })
 
 router.get('about', async (ctx, next) => {
-  await ctx.render('index', {
-    root: renderToString(<About />)
-  })
+  storeAndRoutes(ctx)
 })
 
 router.get(['blog', 'blog/list/:page'], async (ctx, next) => {
-  let response = await fetch(`http://localhost:4000/api/bloglist/${ctx.query.page}`)
+  let response = await fetch(`${apiUrl}/bloglist/${ctx.query.page}`)
   let list = await response.json()
-  let store = createStore(reducer, {
-    bloglist: {
-      list
-    }
-  }, applyMiddleware(thunk))
+  let bloglist = { list }
   
-  matchRoutes(ctx, store)
+  storeAndRoutes(ctx, { bloglist })
 })
 
 router.get('404', async (ctx, next) => {
-  await ctx.render('index', {
-    root: renderToString(<NotFound />)
-  })
+  storeAndRoutes(ctx)
 })
 
 var getData = () => {
@@ -113,16 +97,5 @@ router.post('/', async (ctx, next) => {
     results: articles
   }
 })
-
-router.post('blog', async (ctx, next) => {
-  ctx.body = {
-    blog: 'blog'
-  }
-})
-/*router.post('profit', async (ctx, next) => {
-  ctx.body = {
-    blog: 'profit'
-  }
-})*/
 
 export default router
