@@ -1,9 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 import FlatButton from 'material-ui/FlatButton'
 import NavigateBefore from 'material-ui/svg-icons/image/navigate-before'
 import NavigateNext from 'material-ui/svg-icons/image/navigate-next'
 import { lightBlue500 } from 'material-ui/styles/colors'
+
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as BlogActions from '../../actions/blog'
 
 const spanStyle = {
   display: 'inline-block',
@@ -48,16 +52,70 @@ const navigateStyle = {
 }
 
 class Pagination extends Component {
+  static propTypes = {
+    pagination: PropTypes.object.isRequired,
+    getPagination: PropTypes.func.isRequired
+  }
+  paginationClick = (page) => {
+    const { getPagination } = this.props
+    getPagination(page)
+  }
   render() {
-    return (
-      <div className="pagination">
-        <Link to="" className="page-before-btn">
+    const { pagination, getPagination } = this.props
+    let PreviousComponent, CurrentComponent, NextComponent
+    console.log(pagination)
+    if (pagination.previous) {
+      PreviousComponent = (
+        <Link
+          to={`/blog/page/${pagination.previous}`}
+          className="page-before-btn"
+          onClick={e => this.paginationClick(pagination.previous)}
+        >
           <FlatButton
             label={<NavigateBefore style={navigateStyle} />}
             style={flatButtonStyle}
           />
         </Link>
-        <span style={currentStyle} className="page-current-btn">1</span>
+      )
+    } else {
+      PreviousComponent = (
+        <FlatButton
+          label={<NavigateBefore style={navigateStyle} />}
+          className="page-before-btn page-disable-btn"
+          style={flatButtonStyle}
+          disabled={true}
+        />
+      )
+    }
+    if (pagination.next) {
+      NextComponent = (
+        <Link to={`/blog/page/${pagination.next}`} className="page-next-btn" onClick={e => getPagination(pagination.next)}>
+          <FlatButton
+            label={<NavigateNext style={navigateStyle} />}
+            style={flatButtonStyle}
+          />
+        </Link>
+      )
+    } else {
+      NextComponent = (
+        <FlatButton
+          label={<NavigateNext style={navigateStyle} />}
+          className="page-next-btn page-disable-btn"
+          style={flatButtonStyle}
+          disabled={true}
+        />
+      )
+    }
+    return (
+      <div className="pagination">
+        {/*<Link to="" className="page-before-btn">
+          <FlatButton
+            label={<NavigateBefore style={navigateStyle} />}
+            style={flatButtonStyle}
+          />
+        </Link>
+        <span style={currentStyle} className="page-current-btn" onClick={e => {getPagination()}}>1</span>
+        <span style={currentStyle} className="page-current-btn" onClick={e => {getPagination(2)}}>2</span>
         <Link to="" className="page-center-btn">
           <FlatButton label="2" style={flatButtonStyle} />
         </Link>
@@ -76,10 +134,22 @@ class Pagination extends Component {
             label={<NavigateNext style={navigateStyle} />}
             style={flatButtonStyle}
           />
-        </Link>
+        </Link>*/}
+        {PreviousComponent}
+        <span style={currentStyle} className="page-current-btn">{pagination.current}</span>
+        {NextComponent}
       </div>
     )
   }
 }
 
-export default Pagination
+const mapStateToProps = (state) => {
+  const { pagination } = state.blog
+  return { pagination }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(BlogActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pagination)
