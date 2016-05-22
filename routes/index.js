@@ -54,11 +54,11 @@ router.get('about', async (ctx, next) => {
 })
 
 router.get(['blog', 'blog/list/:page'], async (ctx, next) => {
-  let response = await fetch(`${apiUrl}/bloglist/${ctx.query.page}`)
+  let response = await fetch(`${apiUrl}/blog/list/${ctx.query.page}`)
   let list = await response.json()
-  let bloglist = { list }
+  let blog = { list }
   
-  storeAndRoutes(ctx, { bloglist })
+  storeAndRoutes(ctx, blog)
 })
 
 router.get('404', async (ctx, next) => {
