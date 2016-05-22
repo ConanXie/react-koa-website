@@ -1,15 +1,17 @@
 'use strict'
 
 import { combineReducers } from 'redux'
+import { routerReducer as routing } from 'react-router-redux'
 
 /**
  * combine reducers
  */
 
-import bloglist from './bloglist'
+import blog from './blog'
 import counter from './counter'
 
 export default combineReducers({
-  bloglist,
-  counter
+  blog,
+  counter,
+  routing
 })
