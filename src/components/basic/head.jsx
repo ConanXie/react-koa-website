@@ -17,7 +17,7 @@ import { lightBlue500 } from 'material-ui/styles/colors'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as BloglistActions from '../../actions/bloglist'
+import * as BlogActions from '../../actions/blog'
 
 const style = {
   position: 'fixed',
@@ -42,6 +42,11 @@ class Head extends Component {
       open: false
     })
   }
+  initBlogData = () => {
+    const { blogList, getPagination } = this.props
+    blogList()
+    getPagination()
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -55,7 +60,7 @@ class Head extends Component {
     hours = hours < 10 ? `0${hours}` : hours
     minutes = minutes < 10 ? `0${minutes}` : minutes
     
-    const { blogList, list } = this.props
+    const { blogList, getPagination } = this.props
     
     return (
       <Paper style={style} zDepth={1} rounded={false} id="header">
@@ -86,7 +91,7 @@ class Head extends Component {
                   <MenuItem onTouchTap={this.handleClose} primaryText="主页" leftIcon={<ActionHome />} />
                 </IndexLink>
                 <Link to="/blog" className="slide-menu-link" activeClassName="active">
-                  <MenuItem onTouchTap={this.handleClose} onClick={e => blogList()} primaryText="博客" leftIcon={<EditorFormatListBulleted />} />
+                  <MenuItem onTouchTap={this.handleClose} onClick={this.initBlogData} primaryText="博客" leftIcon={<EditorFormatListBulleted />} />
                 </Link>
                 <Link to="/profit" className="slide-menu-link" activeClassName="active">
                   <MenuItem onTouchTap={this.handleClose} primaryText="作品" leftIcon={<ImageLandscape />} />
@@ -103,7 +108,7 @@ class Head extends Component {
               <nav>
                 <ul>
                   <li><IndexLink to="/" activeClassName="active">主页</IndexLink></li>
-                  <li onClick={e => blogList()}><Link to="/blog" activeClassName="active">博客</Link></li>
+                  <li onClick={this.initBlogData}><Link to="/blog" activeClassName="active">博客</Link></li>
                   <li><Link to="/profit" activeClassName="active">作品</Link></li>
                   <li><Link to="/about" activeClassName="active">关于</Link></li>
                   <li><Link to="/contact" activeClassName="active">联系</Link></li>
@@ -118,18 +123,11 @@ class Head extends Component {
 }
 Head.propTypes = {
   blogList: PropTypes.func.isRequired,
-  list: PropTypes.array.isRequired
-}
-
-const mapStateToProps = (state) => {
-  const { list } = state.bloglist
-  return {
-    list
-  }
+  getPagination: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(BloglistActions, dispatch)
+  return bindActionCreators(BlogActions, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Head)
+export default connect(null, mapDispatchToProps)(Head)
