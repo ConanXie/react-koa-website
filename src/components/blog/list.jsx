@@ -25,7 +25,7 @@ List.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  const { list } = state.bloglist
+  const { list } = state.blog
   return {
     list
   }
