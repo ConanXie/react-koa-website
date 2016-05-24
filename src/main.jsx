@@ -27,7 +27,7 @@ if (window.__INITIAL_STATE__) {
 }
 
 const history = syncHistoryWithStore(browserHistory, store)
-if (typeof window !== 'undefined') {
+/*if (typeof window !== 'undefined') {
   history.listen(location => {
     setTimeout(() => {
       if (location.action === 'POP') {
@@ -37,9 +37,9 @@ if (typeof window !== 'undefined') {
     })
   })
 }
-
+console.log(store.getState())
 console.log(history)
-console.log(browserHistory)
+console.log(browserHistory)*/
 render((
   <Provider store={store}>
     <Router history={history} routes={routes} />

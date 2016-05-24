@@ -12,18 +12,20 @@ import NotFound from './components/404'
 import Counter from './components/counter'
 
 const routes = (
-  <Route path="/" component={Root}>
-    <IndexRoute component={Counter} />
-    <Route path="blog" component={Blog}>
-      <IndexRoute component={BlogList} />
-      <Route path="page/:page" component={BlogList} />
-      <Route path="detail/:id" component={BlogDetail} />
+  <div>
+    <Route path="/" component={Root}>
+      <IndexRoute component={Counter} />
+      <Route path="blog" component={Blog}>
+        <IndexRoute component={BlogList} />
+        <Route path="page/:page" component={BlogList} />
+        <Route path="detail/:id" component={BlogDetail} />
+      </Route>
+      <Route path="about" component={About} />
+      <Route path="data" component={About} />
     </Route>
-    <Route path="about" component={About} />
-    <Route path="data" component={About} />
     <Route path="404" component={NotFound} />
     <Redirect from="*" to="/404" />
-  </Route>
+  </div>
 )
 
 export default routes
