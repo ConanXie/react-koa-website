@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import React, { Component } from 'react'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up'

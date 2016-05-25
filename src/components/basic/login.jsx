@@ -2,7 +2,6 @@ import React from 'react'
 import { Paper } from 'material-ui'
 import TextField from 'material-ui/TextField'
 import FlatButton from 'material-ui/FlatButton'
-import $ from 'jquery'
 
 const style = {
   position: 'fixed',

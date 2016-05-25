@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import React, { Component, PropTypes } from 'react'
 import { Link, IndexLink } from 'react-router'
 
@@ -103,7 +102,7 @@ class Head extends Component {
                   <MenuItem onTouchTap={this.handleClose} primaryText="联系" leftIcon={<CommunicationEmail />} />
                 </Link>
               </Drawer>
-              <div className="page-title">首页</div>
+              <div className="page-title">主页</div>
               <div className="logo">{this.props.title}</div>
               <nav>
                 <ul>
