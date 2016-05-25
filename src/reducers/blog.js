@@ -30,9 +30,11 @@ export default function blog(state = initialState, action) {
       if (action.payload.action === 'POP') {
         const store = require('../main')
         const pathname = action.payload.pathname
-        if (/blog\/page/.test(pathname)) {
-          let page = + pathname.split('/')[3]
-          store.dispatch(getPagination(page))
+        if (/blog\/page/.test(pathname) || /^\/blog$/.test(pathname)) {
+          let page = pathname.split('/')[3] || 1
+          if (store.dispatch) {
+            store.dispatch(getPagination(page))
+          }
         }
       }
     default:
