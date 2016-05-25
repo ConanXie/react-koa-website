@@ -27,7 +27,7 @@ if (window.__INITIAL_STATE__) {
 }
 
 const history = syncHistoryWithStore(browserHistory, store)
-/*if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined') {
   history.listen(location => {
     setTimeout(() => {
       if (location.action === 'POP') {
@@ -37,7 +37,7 @@ const history = syncHistoryWithStore(browserHistory, store)
     })
   })
 }
-console.log(store.getState())
+/*console.log(store.getState())
 console.log(history)
 console.log(browserHistory)*/
 render((
