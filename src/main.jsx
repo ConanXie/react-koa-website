@@ -45,3 +45,5 @@ render((
     <Router history={history} routes={routes} />
   </Provider>
 ), document.querySelector('#app'))
+
+module.exports = store
