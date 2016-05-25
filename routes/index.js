@@ -53,12 +53,22 @@ router.get('about', async (ctx, next) => {
   storeAndRoutes(ctx)
 })
 
-router.get(['blog', 'blog/list/:page'], async (ctx, next) => {
-  let response = await fetch(`${apiUrl}/blog/list/${ctx.query.page}`)
-  let list = await response.json()
-  let blog = { list }
+router.get(['blog', 'blog/page/:page'], async (ctx, next) => {
+  let page = ctx.params.page || 1
+  let list, pagination
+  try {
+    let resList = await fetch(`${apiUrl}/blog/list/${page}`)
+    list = await resList.json()
+    
+    let resPagination = await fetch(`${apiUrl}/blog/pagination/${page}`)
+    pagination = await resPagination.json()
+  } catch (e) {
+    throw e
+  }
   
-  storeAndRoutes(ctx, blog)
+  let blog = { list, pagination }
+  
+  storeAndRoutes(ctx, { blog })
 })
 
 router.get('404', async (ctx, next) => {
