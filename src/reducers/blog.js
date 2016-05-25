@@ -15,7 +15,6 @@ const initialState = {
 }
 
 export default function blog(state = initialState, action) {
-  const store = require('../main')
   switch (action.type) {
     case GET_BLOGLIST:
       return {
@@ -29,6 +28,7 @@ export default function blog(state = initialState, action) {
       }
     case LOCATION_CHANGE:
       if (action.payload.action === 'POP') {
+        const store = require('../main')
         const pathname = action.payload.pathname
         if (/blog\/page/.test(pathname)) {
           let page = + pathname.split('/')[3]
