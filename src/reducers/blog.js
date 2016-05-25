@@ -1,4 +1,6 @@
 import { GET_BLOGLIST, UPDATE_PAGINATION } from '../actions/blog'
+import { LOCATION_CHANGE } from 'react-router-redux'
+import { getPagination } from '../actions/blog'
 
 const initialState = {
   list: [],
@@ -13,6 +15,7 @@ const initialState = {
 }
 
 export default function blog(state = initialState, action) {
+  const store = require('../main')
   switch (action.type) {
     case GET_BLOGLIST:
       return {
@@ -23,6 +26,14 @@ export default function blog(state = initialState, action) {
       return {
         ...state,
         pagination: action.pagination
+      }
+    case LOCATION_CHANGE:
+      if (action.payload.action === 'POP') {
+        const pathname = action.payload.pathname
+        if (/blog\/page/.test(pathname)) {
+          let page = + pathname.split('/')[3]
+          store.dispatch(getPagination(page))
+        }
       }
     default:
       return state
