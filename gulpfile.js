@@ -21,8 +21,8 @@ const files = [
 gulp.task('less', () => {
   gulp.watch('static/**/*.less', (e) => {
     if (e.type === 'changed') {
-      let path = e.path
-      gulp.src(path)
+      // let path = e.path
+      gulp.src('static/less/default.less')
         .pipe(plumber({ errorHandler: notify.onError("Error: <%= error.message %>") }))
         .pipe(less())
         .pipe(csso())
