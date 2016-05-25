@@ -89,7 +89,7 @@ class Head extends Component {
                 <IndexLink to="/" className="slide-menu-link" activeClassName="active">
                   <MenuItem onTouchTap={this.handleClose} primaryText="主页" leftIcon={<ActionHome />} />
                 </IndexLink>
-                <Link to="/blog/page/1" className="slide-menu-link" activeClassName="active">
+                <Link to="/blog" className="slide-menu-link" activeClassName="active">
                   <MenuItem onTouchTap={this.handleClose} onClick={this.initBlogData} primaryText="博客" leftIcon={<EditorFormatListBulleted />} />
                 </Link>
                 <Link to="/profit" className="slide-menu-link" activeClassName="active">
@@ -107,7 +107,7 @@ class Head extends Component {
               <nav>
                 <ul>
                   <li><IndexLink to="/" activeClassName="active">主页</IndexLink></li>
-                  <li onClick={this.initBlogData}><Link to="/blog/page/1" activeClassName="active">博客</Link></li>
+                  <li onClick={this.initBlogData}><Link to="/blog" activeClassName="active">博客</Link></li>
                   <li><Link to="/profit" activeClassName="active">作品</Link></li>
                   <li><Link to="/about" activeClassName="active">关于</Link></li>
                   <li><Link to="/contact" activeClassName="active">联系</Link></li>
