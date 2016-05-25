@@ -3,13 +3,13 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as CounterActions from '../actions/counter'
 
-const buttonStyle = {
-  background: '#343434',
-  color: '#fff',
-  padding: '10px 20px',
-  cursor: 'pointer',
-  border: 'none',
-  outline: 'none'
+import RaisedButton from 'material-ui/RaisedButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
+import ContentRemove from 'material-ui/svg-icons/content/remove'
+import { lightBlue500 } from 'material-ui/styles/colors'
+
+const style = {
+  margin: '20px 12px 10px 0'
 }
 class Counter extends Component {
   handleClick(e) {
@@ -20,29 +20,33 @@ class Counter extends Component {
   render() {
     const { increment, incrementIfOdd, incrementAsync, decrement, count, value, getData, results } = this.props
     return (
-      <div>
-        Clicked: {count} times
-        {' '}
-        <button style={buttonStyle} onClick={increment}>+</button>
-        {' '}
-        <button style={buttonStyle} onClick={decrement}>-</button>
-        {' '}
-        <button style={buttonStyle} onClick={incrementIfOdd}>Increment if odd</button>
-        {' '}
-        <button style={buttonStyle} onClick={e => incrementAsync() }>Increment async</button>
-        <h1>{value}</h1>
-        <button style={buttonStyle} onClick={e => this.handleClick(e)} ref="button">获取数据</button>
-        {/*<ul>
-          {results.map((result) => {
-            return (
-              <li key={result.date}>
-                <h3>{result.title}</h3>
-                <p>{result.date}</p>
-                <div>{result.body}</div>
-              </li>
-            )
-          })}
-        </ul>*/}
+      <div className="main">
+        <div className="body">
+          <div>
+            <p>Clicked: {count} times</p>
+            {' '}
+            <RaisedButton style={style} icon={<ContentAdd />} onClick={increment} />
+            {' '}
+            <RaisedButton style={style} icon={<ContentRemove />} onClick={decrement} />
+            {' '}
+            <RaisedButton style={style} label="Increment if odd" onClick={incrementIfOdd} />
+            {' '}
+            <RaisedButton style={style} label="Increment async" onClick={e => incrementAsync()} />
+            <h1>{value}</h1>
+            <RaisedButton style={style} secondary={true} label="获取数据" onClick={e => this.handleClick(e)} ref="button" />
+            {/*<ul>
+              {results.map((result) => {
+                return (
+                  <li key={result.date}>
+                    <h3>{result.title}</h3>
+                    <p>{result.date}</p>
+                    <div>{result.body}</div>
+                  </li>
+                )
+              })}
+            </ul>*/}
+          </div>
+        </div>
       </div>
     )
   }
