@@ -13,9 +13,7 @@ const concat = require('gulp-concat')
 
 const files = [
   'static/js/*.js',
-  'static/css/*.css',
-  'views/**',
-  'src/**'
+  'static/css/*.css'
 ]
 
 gulp.task('less', () => {
