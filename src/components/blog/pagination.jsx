@@ -62,7 +62,7 @@ class Pagination extends Component {
   }
   render() {
     const { pagination, getPagination } = this.props
-    let PreviousComponent, CurrentComponent, NextComponent
+    let PreviousComponent, NextComponent
     console.log(pagination)
     if (pagination.previous) {
       PreviousComponent = (
