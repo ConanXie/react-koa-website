@@ -10,6 +10,7 @@ import BlogDetail from './components/blog/article'
 import About from './components/about'
 import NotFound from './components/404'
 import Counter from './components/counter'
+import Write from './components/write/write'
 
 const routes = (
   <div>
@@ -22,6 +23,7 @@ const routes = (
       </Route>
       <Route path="about" component={About} />
       <Route path="data" component={About} />
+      <Route path="write" component={Write} />
     </Route>
     <Route path="404" component={NotFound} />
     <Redirect from="*" to="/404" />

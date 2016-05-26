@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { Link } from 'react-router'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as CounterActions from '../actions/counter'
@@ -45,6 +46,9 @@ class Counter extends Component {
                 )
               })}
             </ul>*/}
+            <Link to="/write">
+              <RaisedButton style={style} label="write" />
+            </Link>
           </div>
         </div>
       </div>

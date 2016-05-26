@@ -49,7 +49,7 @@ router.get('/', async (ctx, next) => {
   storeAndRoutes(ctx, { counter })
 })
 
-router.get('about', async (ctx, next) => {
+router.get(['about', 'write'], async (ctx) => {
   storeAndRoutes(ctx)
 })
 
