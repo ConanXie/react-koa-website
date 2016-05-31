@@ -55,7 +55,7 @@ class Write extends Component {
               <TextField
                 name="title"
                 ref="title"
-                floatingLabelText="标题"
+                floatingLabelText="标题1"
                 underlineFocusStyle={style.underlineStyle}
                 floatingLabelFocusStyle={style.floatingLabelStyle}
               /><br />
