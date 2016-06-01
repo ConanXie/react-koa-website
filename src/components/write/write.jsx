@@ -32,17 +32,32 @@ const style = {
   }
 }
 class Write extends Component {
-  handleChange = (event, index, value) => {
-    this.setState({value})
+  handleChange = (event, index, validate) => {
+    this.setState({validate})
   }
   submitArticle = (e) => {
     e.preventDefault()
-    console.log(this.refs.form)
-    return false
+    // console.log(this.refs.form)
+    const form = this.refs.form
+    let title = form.title.value
+    let tags = form.tags.value
+    let date = form.date.value
+    let validate = this.state.validate
+    let body = form.body.value
+
+    let article = { title, tags, date, validate, body }
+    console.log(article)
+    fetch('/api/write', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `article=${JSON.stringify(article)}`
+    })
   }
   constructor(props) {
     super(props)
-    this.state = { value: 1 }
+    this.state = { validate: 1 }
   }
   
   render() {
@@ -68,8 +83,9 @@ class Write extends Component {
               /><br />
               <DatePicker
                 hintText="发表时间"
+                name="date"
               />
-              <SelectField value={this.state.value} onChange={this.handleChange}>
+              <SelectField value={this.state.validate} onChange={this.handleChange}>
                 <MenuItem value={1} primaryText="Web" />
                 <MenuItem value={2} primaryText="Life" />
                 <MenuItem value={3} primaryText="IT" />

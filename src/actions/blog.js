@@ -19,7 +19,7 @@ export function getPagination(page = 1) {
   return async (dispatch) => {
     let response = await fetch(`/api/blog/pagination/${page}`)
     let data = await response.json()
-    console.log(data)
+
     dispatch({
       type: UPDATE_PAGINATION,
       pagination: data

@@ -70,6 +70,15 @@ router.get('/blog/pagination/:page', async (ctx, next) => {
 })
 
 /**
+ * 增加文章
+ */
+router.post('/write', async (ctx) => {
+  let article = JSON.parse(ctx.request.body.article)
+  console.log(article)
+  ctx.status = 200
+})
+
+/**
  * test
  */
 router.post('/test/:param', ctx => {
