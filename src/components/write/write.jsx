@@ -32,20 +32,20 @@ const style = {
   }
 }
 class Write extends Component {
-  handleChange = (event, index, validate) => {
-    this.setState({validate})
+  handleChange = (event, index, category) => {
+    this.setState({category})
   }
   submitArticle = (e) => {
     e.preventDefault()
     // console.log(this.refs.form)
     const form = this.refs.form
     let title = form.title.value
-    let tags = form.tags.value
+    let tags = form.tags.value.split(' ')
     let date = form.date.value
-    let validate = this.state.validate
+    let category = this.state.category
     let body = form.body.value
 
-    let article = { title, tags, date, validate, body }
+    let article = { title, tags, date, category, body }
     console.log(article)
     fetch('/api/write', {
       method: 'post',
@@ -57,16 +57,28 @@ class Write extends Component {
   }
   constructor(props) {
     super(props)
-    this.state = { validate: 1 }
+    this.state = { category: 1, categories: [] }
   }
-  
+  componentWillMount() {
+    let a = async (params) => {
+      try {
+        let response = await fetch('/api/category')
+        let categories = await response.json()
+
+        this.setState({ categories })
+      } catch (e) {
+        throw e
+      }
+    }
+    a()
+  }
   render() {
     return (
       <div className="main">
         <div className="body">
           <Paper style={style.wrapper} zDepth={1}>
             <h1>write</h1>
-            <form name="write" ref="form" onSubmit={this.submitArticle}>
+            <form name="write" ref="form" onSubmit={this.submitArticle} autoComplete="off">
               <TextField
                 name="title"
                 ref="title"
@@ -85,11 +97,12 @@ class Write extends Component {
                 hintText="发表时间"
                 name="date"
               />
-              <SelectField value={this.state.validate} onChange={this.handleChange}>
-                <MenuItem value={1} primaryText="Web" />
-                <MenuItem value={2} primaryText="Life" />
-                <MenuItem value={3} primaryText="IT" />
-                <MenuItem value={4} primaryText="Software" />
+              <SelectField value={this.state.category} onChange={this.handleChange}>
+                {this.state.categories.map((value, index) => {
+                  return (
+                    <MenuItem key={index} value={value.id} primaryText={value.name} />
+                  )
+                })}
               </SelectField><br />
               <textarea style={style.textarea} name="body" id="" cols="30" rows="10" placeholder="文章内容" />
               <div className="action-box" style={style.actionBox}>

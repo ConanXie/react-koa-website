@@ -5,6 +5,13 @@ import fs from 'fs'
 const router = koaRouter()
 
 /**
+ * mongodb
+ */
+import mongoose from '../data/config' 
+import articleModel from '../data/articles'
+import categoryModel from '../data/categories'
+
+/**
  * 获取博客列表
  */
 const getBlogList = () => {
@@ -76,6 +83,33 @@ router.post('/write', async (ctx) => {
   let article = JSON.parse(ctx.request.body.article)
   console.log(article)
   ctx.status = 200
+
+  articleModel.create(article, err => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log('ok')
+    }
+  })
+})
+
+/**
+ * 查询分类
+ */
+const getCategories = () => {
+  return new Promise((resolve, reject) => {
+    categoryModel.find({}, (err, doc) => {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(doc)
+      }
+    })
+  })
+}
+router.get('/category', async (ctx) => {
+  ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
+  ctx.body = await getCategories()
 })
 
 /**
