@@ -91,7 +91,7 @@ class Write extends Component {
                 <MenuItem value={3} primaryText="IT" />
                 <MenuItem value={4} primaryText="Software" />
               </SelectField><br />
-              <textarea style={style.textarea} name="body" id="" cols="30" rows="10" placeholder="文章内容"></textarea>
+              <textarea style={style.textarea} name="body" id="" cols="30" rows="10" placeholder="文章内容" />
               <div className="action-box" style={style.actionBox}>
                 <FlatButton label="取消" />
                 <FlatButton label="确认" secondary={true} onClick={this.submitArticle}>
