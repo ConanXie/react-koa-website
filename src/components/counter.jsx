@@ -26,15 +26,15 @@ class Counter extends Component {
           <div>
             <p>Clicked: {count} times</p>
             {' '}
-            <RaisedButton style={style} icon={<ContentAdd />} onClick={increment} />
+            <RaisedButton style={style} icon={<ContentAdd />} onTouchTap={increment} />
             {' '}
-            <RaisedButton style={style} icon={<ContentRemove />} onClick={decrement} />
+            <RaisedButton style={style} icon={<ContentRemove />} onTouchTap={decrement} />
             {' '}
-            <RaisedButton style={style} label="Increment if odd" onClick={incrementIfOdd} />
+            <RaisedButton style={style} label="Increment if odd" onTouchTap={incrementIfOdd} />
             {' '}
-            <RaisedButton style={style} label="Increment async" onClick={e => incrementAsync()} />
+            <RaisedButton style={style} label="Increment async" onTouchTap={e => incrementAsync()} />
             <h1>{value}</h1>
-            <RaisedButton style={style} secondary={true} label="获取数据" onClick={e => this.handleClick(e)} ref="button" />
+            <RaisedButton style={style} secondary={true} label="获取数据" onTouchTap={e => this.handleClick(e)} ref="button" />
             {/*<ul>
               {results.map((result) => {
                 return (
