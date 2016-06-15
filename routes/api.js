@@ -10,6 +10,7 @@ const router = koaRouter()
 import mongoose from '../data/config' 
 import articleModel from '../data/articles'
 import categoryModel from '../data/categories'
+import userModel from '../data/users'
 
 /**
  * 获取博客列表
@@ -110,6 +111,19 @@ const getCategories = () => {
 router.get('/category', async (ctx) => {
   ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
   ctx.body = await getCategories()
+})
+
+/**
+ * 登录
+ */
+router.post('/login', async (ctx) => {
+  let res = ctx.request.body
+
+  const login = (user, name) => {
+    return new Promise((resolve, reject) => {
+      userModel.find()
+    })
+  }
 })
 
 /**
