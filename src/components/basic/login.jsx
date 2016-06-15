@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Paper } from 'material-ui'
 import TextField from 'material-ui/TextField'
 import FlatButton from 'material-ui/FlatButton'
 import { pinkA200 } from 'material-ui/styles/colors'
+
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 const style = {
   position: 'fixed',
@@ -29,7 +32,7 @@ const submitStyle = {
   marginTop: '20px'
 }
 
-class Login extends React.Component {
+class Login extends Component {
   handleClick() {
     $('#form-wrap').fadeOut()
   }
@@ -56,6 +59,7 @@ class Login extends React.Component {
     }
   }
   render() {
+    const { status } = this.props
     return (
       <div style={style} id="form-wrap">
         <div className="shade" onClick={this.handleClick}></div>
@@ -87,4 +91,14 @@ class Login extends React.Component {
   }
 }
 
-export default Login
+Login.propTypes = {
+  status: PropTypes.bool.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return {
+    status: state.login.staus
+  }
+}
+
+export default connect(mapStateToProps)(Login)
