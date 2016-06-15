@@ -12,7 +12,8 @@ import EditorFormatListBulleted from 'material-ui/svg-icons/editor/format-list-b
 import ImageLandscape from 'material-ui/svg-icons/image/landscape'
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline'
 import CommunicationEmail from 'material-ui/svg-icons/communication/email'
-import { lightBlue500 } from 'material-ui/styles/colors'
+import SocialPerson from 'material-ui/svg-icons/social/person'
+import { lightBlue500, lightBlue100 } from 'material-ui/styles/colors'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -25,6 +26,9 @@ const style = {
   color: '#fff',
   textAlign: 'center',
   backgroundColor: lightBlue500
+}
+const perosnIcon = {
+  height: '32px'
 }
 
 class Head extends Component {
@@ -67,7 +71,9 @@ class Head extends Component {
           <div className="subheader top">
             <div className="status-bar">
               <div className="left">{`${hours} : ${minutes}`}</div>
-              <div className="right" onClick={this.handleLogin}>login</div>
+              <div className="right" onClick={this.handleLogin}>
+                <SocialPerson color={lightBlue100} hoverColor={'#fff'} style={perosnIcon} />
+              </div>
             </div>
           </div>
           <div className="subheader bottom">

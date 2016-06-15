@@ -55,6 +55,9 @@ class Write extends Component {
       body: `article=${JSON.stringify(article)}`
     })
   }
+  back = () => {
+    history.go(-1)
+  }
   constructor(props) {
     super(props)
     this.state = { category: 1, categories: [] }
@@ -106,7 +109,7 @@ class Write extends Component {
               </SelectField><br />
               <textarea style={style.textarea} name="body" id="" cols="30" rows="10" placeholder="文章内容" />
               <div className="action-box" style={style.actionBox}>
-                <FlatButton label="取消" />
+                <FlatButton label="取消" onClick={this.back} />
                 <FlatButton label="确认" secondary={true} onClick={this.submitArticle}>
                   <input type="submit" hidden />
                 </FlatButton>
