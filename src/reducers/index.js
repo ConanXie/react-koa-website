@@ -9,6 +9,7 @@ import { routerReducer as routing } from 'react-router-redux'
 
 import blog from './blog'
 import counter from './counter'
+import login from './login'
 
 export default combineReducers({
   blog,
