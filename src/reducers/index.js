@@ -14,5 +14,6 @@ import login from './login'
 export default combineReducers({
   blog,
   counter,
+  login,
   routing
 })
