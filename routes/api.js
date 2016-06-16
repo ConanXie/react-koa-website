@@ -117,13 +117,42 @@ router.get('/category', async (ctx) => {
  * 登录
  */
 router.post('/login', async (ctx) => {
-  let res = ctx.request.body
+  let req = ctx.request.body
 
-  const login = (user, name) => {
+  const login = (user, pw) => {
     return new Promise((resolve, reject) => {
-      userModel.find()
+      userModel.findOne({ name: user }, (err, doc) => {
+        if (err) {
+          reject(err)
+        } else {
+          if (doc) {
+            userModel.findOne({ name: user, password: pw }, (err, doc) => {
+              if (err) {
+                reject(err)
+              } else {
+                if (doc) {
+                  resolve({ code: 0, msg: '登录成功' })
+                } else {
+                  resolve({ code: 102, msg: '密码错误' })
+                }
+              }
+            })
+          } else {
+            resolve({ code: 101, msg: '用户不存在' })
+          }
+        }
+      })
     })
   }
+  let data = {}
+  try {
+    data = await login(req.user, req.pw)
+    console.log(data)
+  } catch (e) {
+    throw e
+  }
+  ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
+  ctx.body = data
 })
 
 /**
