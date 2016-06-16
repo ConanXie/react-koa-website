@@ -13,11 +13,15 @@ import ImageLandscape from 'material-ui/svg-icons/image/landscape'
 import ActionInfoOutline from 'material-ui/svg-icons/action/info-outline'
 import CommunicationEmail from 'material-ui/svg-icons/communication/email'
 import SocialPerson from 'material-ui/svg-icons/social/person'
+import SocialPersonAdd from 'material-ui/svg-icons/social/person-add'
+import IconMenu from 'material-ui/IconMenu'
 import { lightBlue500, lightBlue100 } from 'material-ui/styles/colors'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as BlogActions from '../../actions/blog'
+
+import Login from './login'
 
 const style = {
   position: 'fixed',
@@ -26,6 +30,11 @@ const style = {
   color: '#fff',
   textAlign: 'center',
   backgroundColor: lightBlue500
+}
+const iconStyle = {
+  padding: 0,
+  width: '30px',
+  height: '30px'
 }
 const perosnIcon = {
   height: '32px'
@@ -45,15 +54,26 @@ class Head extends Component {
       open: false
     })
   }
+  getLoginStatus = (status) => {
+    this.setState({
+      status
+    })
+  }
   initBlogData = () => {
     const { blogList, getPagination } = this.props
     blogList()
     getPagination()
   }
+  logout = () => {
+    this.setState({
+      status: false
+    })
+  }
   constructor(props) {
     super(props)
     this.state = {
-      open: false
+      open: false,
+      status: false
     }
   }
   render() {
@@ -64,16 +84,38 @@ class Head extends Component {
     minutes = minutes < 10 ? `0${minutes}` : minutes
     
     const { blogList, getPagination } = this.props
-    
+    const { status } = this.state
+
+    let RightComponent
+    if (!status) {
+      RightComponent = (
+        <div className="right" onClick={this.handleLogin}>
+          <IconButton style={iconStyle}>
+            <SocialPersonAdd color={lightBlue100} hoverColor={'#fff'} style={perosnIcon} />
+          </IconButton>
+        </div>
+      )
+    } else {
+      RightComponent = (
+        <div className="right">
+          <IconMenu
+            iconButtonElement={<IconButton style={iconStyle}><SocialPerson color={lightBlue100} hoverColor={'#fff'} style={perosnIcon} /></IconButton>}
+            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+            targetOrigin={{horizontal: 'right', vertical: 'top'}}
+          >
+            <MenuItem primaryText="退出" onTouchTap={this.logout} />
+          </IconMenu>
+        </div>
+      )
+    }
+
     return (
       <Paper style={style} zDepth={1} rounded={false} id="header">
         <header>
           <div className="subheader top">
             <div className="status-bar">
               <div className="left">{`${hours} : ${minutes}`}</div>
-              <div className="right" onClick={this.handleLogin}>
-                <SocialPerson color={lightBlue100} hoverColor={'#fff'} style={perosnIcon} />
-              </div>
+              {RightComponent}
             </div>
           </div>
           <div className="subheader bottom">
@@ -122,6 +164,7 @@ class Head extends Component {
             </div>
           </div>
         </header>
+        <Login callbackParent={this.getLoginStatus} />
       </Paper>
     )
   }
