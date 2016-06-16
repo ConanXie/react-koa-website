@@ -2,10 +2,13 @@ import React, { Component, PropTypes } from 'react'
 import { Paper } from 'material-ui'
 import TextField from 'material-ui/TextField'
 import FlatButton from 'material-ui/FlatButton'
-import { pinkA200 } from 'material-ui/styles/colors'
+import Snackbar from 'material-ui/Snackbar'
+import { pinkA200, redA400, green600 } from 'material-ui/styles/colors'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
+import * as loginActions from '../../actions/login'
 
 const style = {
   position: 'fixed',
@@ -21,11 +24,13 @@ const formStyle = {
   position: 'absolute',
   top: '50%',
   left: '50%',
-  WebkitTransform: 'translate(-50%, -50%)',
   transform: 'translate(-50%, -50%)',
-  padding: '20px 20px 8px',
+  padding: '20px 4px 8px',
   background: '#fff',
   borderRadius: '2px'
+}
+const inputStyle = {
+  margin: '0 30px 0 20px'
 }
 const submitStyle = {
   float: 'right',
@@ -33,12 +38,19 @@ const submitStyle = {
 }
 
 class Login extends Component {
-  handleClick() {
+  handleClick = () => {
     $('#form-wrap').fadeOut()
+    this.setState({
+      userName: '',
+      password: ''
+    })
   }
   login = (e) => {
     e.preventDefault()
-    console.log(this.state)
+    const { login } = this.props
+    let { userName, password } = this.state
+
+    login(userName, password)
   }
   watchName = (e) => {
     this.setState({
@@ -58,8 +70,20 @@ class Login extends Component {
       password: ''
     }
   }
+  componentWillReceiveProps(nextProps) {
+    const { callbackParent } = this.props
+    /**
+     * 登录成功表单隐藏
+     */
+    if (nextProps.status) {
+      setTimeout(() => {
+        callbackParent(nextProps.status)
+        this.handleClick()
+      }, 800)
+    }
+  }
   render() {
-    const { status } = this.props
+    const { status, snackbar, login, closeSnackbar } = this.props
     return (
       <div style={style} id="form-wrap">
         <div className="shade" onClick={this.handleClick}></div>
@@ -70,6 +94,7 @@ class Login extends Component {
               underlineFocusStyle={{borderColor: pinkA200}}
               value={this.state.userName}
               onChange={this.watchName}
+              style={inputStyle}
             /><br/>
             <TextField
               hintText="密码"
@@ -77,6 +102,7 @@ class Login extends Component {
               underlineFocusStyle={{borderColor: pinkA200}}
               value={this.state.password}
               onChange={this.watchPassword}
+              style={inputStyle}
             /><br/>
             <FlatButton
               label="登录"
@@ -86,19 +112,32 @@ class Login extends Component {
             />
           </form>
         </Paper>
+        <Snackbar
+          open={snackbar.open}
+          message={snackbar.message}
+          autoHideDuration={1000}
+          onRequestClose={closeSnackbar}
+          bodyStyle={{ width: '120px', textAlign: 'left', backgroundColor: status ? green600 : redA400 }}
+        />
       </div>
     )
   }
 }
 
 Login.propTypes = {
-  status: PropTypes.bool.isRequired
+  status: PropTypes.bool.isRequired,
+  snackbar: PropTypes.object.isRequired,
+  login: PropTypes.func.isRequired,
+  closeSnackbar: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
-  return {
-    status: state.login.staus
-  }
+  const { status, snackbar } = state.login
+  return { status, snackbar }
 }
 
-export default connect(mapStateToProps)(Login)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(loginActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
