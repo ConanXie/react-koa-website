@@ -18,7 +18,6 @@ class Root extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <Head title="conan" />
-          <Login />
           <BackToTop />
           {this.props.children}
         </div>
