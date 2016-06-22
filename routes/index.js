@@ -40,6 +40,7 @@ const storeAndRoutes = (ctx, state) => {
 const apiUrl = 'http://localhost:4000/api'
 
 router.get('/', async (ctx, next) => {
+  console.log(ctx.session)
   let articles = await getArticles()
   let counter = {
     count: 100,
