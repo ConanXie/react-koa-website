@@ -152,7 +152,12 @@ router.post('/login', async (ctx) => {
     throw e
   }
   ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
-  ctx.body = data
+  ctx.session.user = 'user'
+  // ctx.body = data
+  if (!data.code) {
+    // 存储登录的session
+    // ctx.session.user = req.user
+  }
 })
 
 /**

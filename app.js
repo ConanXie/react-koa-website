@@ -30,10 +30,10 @@ const compiler = webpack(webpackConfig)
 /**
  * 中间件
  */
-app.keys = ['id']
-app.use(session({
+app.keys = ['user']
+app.use(convert(session({
   store: redis()
-}))
+})))
 /*app.use(flash({
   key: 'flash'
 }))*/
