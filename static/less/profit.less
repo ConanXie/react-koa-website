@@ -1,0 +1,77 @@
+@media (min-width: 1280px) {
+  .profit-box {
+    width: 25%;
+  }
+}
+@media (min-width: 901px) and (max-width: 1279px) {
+  .profit-box {
+    width: 33.3333%;
+  }
+}
+@media (min-width: 481px) and (max-width: 900px) {
+  .profit-box {
+    width: 50%;
+  }
+}
+@media (max-width: 480px) {
+  .profit-box {
+    width: 100%;
+  }
+}
+
+.profits-grid {
+  // display: flex;
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+.profit-box {
+  position: relative;
+  float: left;
+  // flex: 1;
+  // width: 600px;
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  &:hover .profit-text {
+    // background: #f00;
+    opacity: 1;
+    transform: scale(1);
+  }
+  &:hover .profit-shade {
+    // background: #f00;
+    opacity: 1;
+    transform: scale(1.25);
+  }
+  & > div {
+    opacity: 0;
+    transform: scale(0);
+    border-radius: 100%;
+    transition: opacity 0.6s, transform 0.4s;
+  }
+  .profit-text {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    h2 {
+      display: table-cell;
+      vertical-align: middle;
+      text-align: center;
+      font: normal 30px 微软雅黑 Light;
+      color: #fff;
+    }
+  }
+  .profit-shade {
+    position: absolute;
+    top: -16.6666%;
+    left: 0;
+    right: 0;
+    padding-bottom: 100%;
+  }
+}
