@@ -11,6 +11,7 @@ import About from './components/about'
 import NotFound from './components/404'
 import Counter from './components/counter'
 import Write from './components/write/write'
+import Profit from './components/profit/profit'
 
 const routes = (
   <div>
@@ -21,6 +22,7 @@ const routes = (
         <Route path="page/:page" component={BlogList} />
         <Route path="detail/:id" component={BlogDetail} />
       </Route>
+      <Route path="profit" component={Profit} />
       <Route path="about" component={About} />
       <Route path="data" component={About} />
       <Route path="write" component={Write} />

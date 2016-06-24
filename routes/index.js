@@ -40,7 +40,6 @@ const storeAndRoutes = (ctx, state) => {
 const apiUrl = 'http://localhost:4000/api'
 
 router.get('/', async (ctx, next) => {
-  console.log(ctx.session)
   let articles = await getArticles()
   let counter = {
     count: 100,
@@ -70,6 +69,10 @@ router.get(['blog', 'blog/page/:page'], async (ctx, next) => {
   let blog = { list, pagination }
   
   storeAndRoutes(ctx, { blog })
+})
+
+router.get('profit', async (ctx, next) => {
+  storeAndRoutes(ctx)
 })
 
 router.get('404', async (ctx, next) => {
