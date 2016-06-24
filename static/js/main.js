@@ -32,4 +32,24 @@ $(() => {
       $('.back-to-top').addClass('button-show')
     }
   }
+  /**
+   * 检测浏览器宽度变化并改变profit-box高度，保持4:3
+   */
+  function watchResize() {
+    let proportion = 4 / 3
+    let width = window.innerWidth
+    let height
+    if (width > 1280) {
+      height = (width / 4) / proportion
+    } else if (width > 900 && width <= 1280) {
+      height = (width / 3) / proportion
+    } else if (width > 480 && width <= 900) {
+      height = (width / 2) / proportion
+    } else {
+      height = width / proportion
+    }
+    $('.profit-box').height(height)
+  }
+  watchResize()
+  window.onresize = watchResize
 })
