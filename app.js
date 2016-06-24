@@ -39,11 +39,11 @@ app.use(convert(session({
 }))*/
 app.use(bodyparser())
 
-app.use(async (ctx, next) => {
+/*app.use(async (ctx, next) => {
   // ctx.session.count = ctx.session.count ? ++ctx.session.count : 1
-  // console.log(ctx.session.count)
+  console.log(ctx.session)
   await next()
-})
+})*/
 
 app.use(router.routes())
    .use(router.allowedMethods())

@@ -151,13 +151,13 @@ router.post('/login', async (ctx) => {
   } catch (e) {
     throw e
   }
-  ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
-  ctx.session.user = 'user'
-  // ctx.body = data
-  if (!data.code) {
+  /*if (!data.code) {
     // 存储登录的session
-    // ctx.session.user = req.user
-  }
+    ctx.session.user = req.user
+    console.log(ctx.session)
+  }*/
+  ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
+  ctx.body = data
 })
 
 /**
