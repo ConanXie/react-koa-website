@@ -5,7 +5,7 @@ import ArrowUp from 'material-ui/svg-icons/hardware/keyboard-arrow-up'
 
 class BackToTop extends Component {
   handleClick() {
-    $('body').animate({scrollTop: 0}, 500)
+    $('html').animate({scrollTop: 0}, 500)
   }
   render() {
     return (
