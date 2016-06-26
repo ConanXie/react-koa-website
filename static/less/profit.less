@@ -20,7 +20,7 @@
 }
 
 .profits-grid {
-  // display: flex;
+  padding-bottom: 80px;
   &::after {
     content: '';
     display: table;
@@ -30,21 +30,18 @@
 .profit-box {
   position: relative;
   float: left;
-  // flex: 1;
-  // width: 600px;
   height: 300px;
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
+  opacity: 0;
   &:hover .profit-text {
-    // background: #f00;
     opacity: 1;
     transform: scale(1);
   }
   &:hover .profit-shade {
-    // background: #f00;
     opacity: 1;
-    transform: scale(1.25);
+    transform: scale(1.26);
   }
   & > div {
     opacity: 0;
@@ -69,9 +66,33 @@
   }
   .profit-shade {
     position: absolute;
-    top: -16.6666%;
+    top: -15.7%;
     left: 0;
     right: 0;
     padding-bottom: 100%;
   }
+}
+
+@keyframes show-profit {
+  0% {
+    opacity: 0;
+    transform: rotate3d(0, 1, 0, 90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate3d(0, 1, 0, 0deg);
+  }
+}
+
+.show-profit-0 {
+  animation: show-profit 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+.show-profit-1 {
+  animation: show-profit 1s 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+.show-profit-2 {
+  animation: show-profit 1s 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+.show-profit-3 {
+  animation: show-profit 1s 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
