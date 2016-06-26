@@ -48,8 +48,9 @@ $(() => {
     } else {
       height = width / proportion
     }
+    console.log(height)
     $('.profit-box').height(height)
   }
-  watchResize()
+  // watchResize()
   window.onresize = watchResize
 })
