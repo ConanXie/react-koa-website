@@ -19,13 +19,13 @@ import webpack from 'webpack'
 const webpackConfig = require('./config/webpack.config')
 const compiler = webpack(webpackConfig)
 
-app.use(async (ctx, next) => {
+/*app.use(async (ctx, next) => {
   console.log(ctx.session)
   let n = ctx.session.views || 0
   ctx.session.views = ++n
   console.log(ctx.session.views)
   await next()
-})
+})*/
 
 /**
  * 中间件
