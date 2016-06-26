@@ -33,7 +33,7 @@ const data = [{
 
 class Image extends Component {
   render() {
-    const { value } = this.props
+    const { index, value } = this.props
     return (
       <div className="profit-box" style={{backgroundImage: value.image}}>
         <div className="profit-shade" style={{backgroundColor: value.shade}}></div>
@@ -49,19 +49,37 @@ class Profit extends Component {
   handleChange = (value) => {
     console.log(value)
   }
+  componentDidMount() {
+    let proportion = 4 / 3
+    let width = window.innerWidth
+    let height
+    if (width > 1280) {
+      height = (width / 4) / proportion
+    } else if (width > 900 && width <= 1280) {
+      height = (width / 3) / proportion
+    } else if (width > 480 && width <= 900) {
+      height = (width / 2) / proportion
+    } else {
+      height = width / proportion
+    }
+    $('.profit-box').height(height)
+    $('.profit-box').each((i, e) => {
+      $(e).addClass(`show-profit-${i}`)
+    })
+  }
   render() {
     return (
       <div>
-        <h1>This is my profits</h1>
+        {/*<h1>This is my profits</h1>
         <Tabs tabItemContainerStyle={style.tabsStyle} onChange={this.handleChange}>
           <Tab style={style.tabStyle} label="One" value={0} />
           <Tab style={style.tabStyle} label="Two" value={1} />
           <Tab style={style.tabStyle} label="Three" value={2} />
-        </Tabs>
+        </Tabs>*/}
         <div className="profits-grid">
           {data.map((value, index) => {
             return (
-              <Image key={index} value={value} />
+              <Image key={index} value={value} index={index} />
             )
           })}
         </div>
