@@ -1,35 +1,12 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router'
-import { Tabs, Tab } from 'material-ui/Tabs'
+import React, { Component, PropTypes } from 'react'
+import RaisedButton from 'material-ui/RaisedButton'
+import NavigationExpandMore from 'material-ui/svg-icons/navigation/expand-more'
+import RefreshIndicator from 'material-ui/RefreshIndicator'
 import { grey900 } from 'material-ui/styles/colors'
 
-const style = {
-  tabsStyle: {
-    background: 'rgba(100, 100, 100, 0.2)',
-    color: '#f00'
-  },
-  tabStyle: {
-    color: grey900
-  }
-}
-
-const data = [{
-  image: 'url("/images/profits/shutterstock_187674005-600x403.jpg")',
-  shade: 'rgba(255, 87, 46, 0.7)',
-  text: 'Oh yeah'
-}, {
-  image: 'url("/images/profits/seagul-600x275.jpg")',
-  shade: 'rgba(52, 129, 201, 0.7)',
-  text: 'Create Prject - Extend'
-}, {
-  image: 'url("/images/profits/picjumbo.com_IMG_6850-600x400.jpg")',
-  shade: 'rgba(255, 244, 234, 0.7)',
-  text: 'Create Prject - Extend'
-}, {
-  image: 'url("/images/profits/picjumbo.com_HNCK0082-600x400.jpg")',
-  shade: 'rgba(126, 87, 194, 0.7)',
-  text: 'Create Prject - Extend'
-}]
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import * as ProfitsActions from '../../actions/profits'
 
 class Image extends Component {
   render() {
@@ -49,7 +26,14 @@ class Profit extends Component {
   handleChange = (value) => {
     console.log(value)
   }
-  componentDidMount() {
+  loadMore = () => {
+    this.setState({
+      loading: true
+    })
+    const { getProfits, page } = this.props
+    getProfits(page)
+  }
+  calcHeight = () => {
     let proportion = 4 / 3
     let width = window.innerWidth
     let height
@@ -62,20 +46,64 @@ class Profit extends Component {
     } else {
       height = width / proportion
     }
-    $('.profit-box').height(height)
-    $('.profit-box').each((i, e) => {
-      $(e).addClass(`show-profit-${i}`)
-    })
+    let index = this.state.index
+    let profits = $('.profit-box')
+    let length = profits.length
+    for (let i = index + 1; i < length; i++) {
+      $(profits[i]).height(height).addClass(`show-profit-${i - index - 1}`)
+      if (i === length - 1) {
+        this.setState({
+          index: this.props.data.length - 1,
+          loading: false
+        })
+      }
+    }
+  }
+  static propTypes = {
+    page: PropTypes.number.isRequired,
+    data: PropTypes.array.isRequired
+  }
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      index: -1,
+      loading: false
+    }
+  }
+  componentDidMount() {
+    this.calcHeight()
+  }
+  componentDidUpdate() {
+    if (this.state.loading) {
+      this.calcHeight()
+    }
   }
   render() {
+    let Button
+    const { loading } = this.state
+    const { data } = this.props
+
+    if (!loading) {
+      Button = (
+        <RaisedButton
+          icon={<NavigationExpandMore />}
+          onTouchTap={this.loadMore}
+        />
+      )
+    } else {
+      Button = (
+        <RefreshIndicator
+          size={40}
+          left={0}
+          top={0}
+          status="loading"
+          style={{ display: 'inline-block', position: 'relative' }}
+        />
+      )
+    }
     return (
-      <div>
-        {/*<h1>This is my profits</h1>
-        <Tabs tabItemContainerStyle={style.tabsStyle} onChange={this.handleChange}>
-          <Tab style={style.tabStyle} label="One" value={0} />
-          <Tab style={style.tabStyle} label="Two" value={1} />
-          <Tab style={style.tabStyle} label="Three" value={2} />
-        </Tabs>*/}
+      <div className="profits-section">
         <div className="profits-grid">
           {data.map((value, index) => {
             return (
@@ -83,9 +111,19 @@ class Profit extends Component {
             )
           })}
         </div>
+        <div className="load-profits">{Button}</div>
       </div>
     )
   }
 }
 
-export default Profit
+const mapStateToProps = (state) => {
+  const { data, page } = state.profits
+  return { data, page }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(ProfitsActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profit)
