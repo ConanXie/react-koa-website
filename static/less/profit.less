@@ -1,3 +1,7 @@
+.profits-section {
+  padding-bottom: 80px;
+}
+
 @media (min-width: 1280px) {
   .profit-box {
     width: 25%;
@@ -20,7 +24,6 @@
 }
 
 .profits-grid {
-  padding-bottom: 80px;
   &::after {
     content: '';
     display: table;
@@ -33,6 +36,7 @@
   height: 300px;
   background-position: center;
   background-repeat: no-repeat;
+  background-size: auto 100%;
   overflow: hidden;
   opacity: 0;
   &:hover .profit-text {
@@ -60,7 +64,7 @@
       display: table-cell;
       vertical-align: middle;
       text-align: center;
-      font: normal 30px 微软雅黑 Light;
+      font: normal 24px 微软雅黑;
       color: #fff;
     }
   }
@@ -95,4 +99,10 @@
 }
 .show-profit-3 {
   animation: show-profit 1s 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+.load-profits {
+  height: 50px;
+  margin: 60px 0 10px;
+  text-align: center;
 }
