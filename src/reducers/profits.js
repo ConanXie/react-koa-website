@@ -2,7 +2,8 @@ import { GET_PROFITS } from '../actions/profits'
 
 const initialState = {
   data: [],
-  page: 1
+  page: 1,
+  done: false
 }
 
 export default function profits(state = initialState, action) {
@@ -11,7 +12,8 @@ export default function profits(state = initialState, action) {
       return {
         ...state,
         data: [...state.data, ...action.data],
-        page: state.page + 1
+        page: state.page + 1,
+        done: action.done
       }
     default:
       return state

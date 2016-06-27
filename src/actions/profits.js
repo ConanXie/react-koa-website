@@ -7,7 +7,8 @@ export function getProfits(page = 1) {
 
     dispatch({
       type: GET_PROFITS,
-      data: data
+      data: data.data,
+      done: data.done
     })
   }
 }
