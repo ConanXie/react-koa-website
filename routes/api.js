@@ -160,6 +160,43 @@ router.post('/login', async (ctx) => {
   ctx.body = data
 })
 
+router.get('/profits/:page', async (ctx) => {
+  let page = ctx.query.page
+  
+  const getProfits = () => {
+    return new Promise((resolve, reject) => {
+      let data = [{
+        image: 'url("/images/profits/shutterstock_187674005-600x403.jpg")',
+        shade: 'rgba(255, 87, 46, 0.7)',
+        text: 'Oh yeah'
+      }, {
+        image: 'url("/images/profits/seagul-600x275.jpg")',
+        shade: 'rgba(52, 129, 201, 0.7)',
+        text: 'Create Prject - Extend'
+      }, {
+        image: 'url("/images/profits/picjumbo.com_IMG_6850-600x400.jpg")',
+        shade: 'rgba(255, 244, 234, 0.7)',
+        text: 'Create Prject - Extend'
+      }, {
+        image: 'url("/images/profits/picjumbo.com_HNCK0082-600x400.jpg")',
+        shade: 'rgba(126, 87, 194, 0.7)',
+        text: 'Create Prject - Extend'
+      }]
+      setTimeout(() => {
+        resolve(data)
+      }, 1000)
+    })
+  }
+  let data
+  try {
+    data = await getProfits()
+  } catch (e) {
+    throw e
+  }
+  ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
+  ctx.body = data
+})
+
 /**
  * test
  */
