@@ -10,10 +10,12 @@ import { routerReducer as routing } from 'react-router-redux'
 import blog from './blog'
 import counter from './counter'
 import login from './login'
+import profits from './profits'
 
 export default combineReducers({
   blog,
   counter,
   login,
+  profits,
   routing
 })
