@@ -161,7 +161,7 @@ router.post('/login', async (ctx) => {
 })
 
 router.get('/profits/:page', async (ctx) => {
-  let page = ctx.query.page
+  let page = ctx.params.page
   
   const getProfits = () => {
     return new Promise((resolve, reject) => {
@@ -193,8 +193,12 @@ router.get('/profits/:page', async (ctx) => {
   } catch (e) {
     throw e
   }
+  let body = {
+    data,
+    done: page < 4 ? false : true
+  }
   ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
-  ctx.body = data
+  ctx.body = body
 })
 
 /**
