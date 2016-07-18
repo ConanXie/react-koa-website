@@ -4,16 +4,16 @@ const webpack = require('webpack')
 const node_modules = path.resolve(__dirname, '../node_modules')
 const dir_src = path.resolve(__dirname, '../src')
 const buildPath = path.resolve(__dirname, '../static')
-const publicPath = 'http://localhost:4000/'
-
+const publicPath = '/assets/'
 
 module.exports = {
   entry: [
-    'webpack-hot-middleware/client?reload=true',
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client?path=/__webpack_hmr',
     path.resolve(dir_src, 'main.jsx')
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx', 'less', 'css']
+    extensions: ['', '.js', '.jsx', 'less', 'css', '.jpg', '.png']
   },
   output: {
     path: buildPath,
@@ -27,10 +27,10 @@ module.exports = {
     loaders: [{
       test: /src(\\|\/).+(\.jsx|\.js)?$/,
       exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['es2016-node5', 'react', 'stage-0']
-      }
+      loaders: ['react-hot', 'babel?presets[]=es2016-node5&presets[]=react&presets[]=stage-0']
+    }, {
+      test: /\.less$/,
+      loader: 'style!css!less'
     }]
   },
   plugins: [
@@ -38,8 +38,5 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
-  stats: {
-    colors: true
-  },
   devtool: 'cheap-module-eval-source-map'
 }

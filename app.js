@@ -49,10 +49,7 @@ app.use(router.routes())
    .use(router.allowedMethods())
    .use(convert(require('koa-webpack-dev-middleware')(compiler, {
       publicPath: webpackConfig.output.publicPath,
-      noInfo: true,
-      stats: {
-        colors: true
-      }
+      noInfo: true
     })))
    .use(convert(require('koa-webpack-hot-middleware')(compiler)))
    .use(convert(statics('static')))
