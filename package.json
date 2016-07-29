@@ -27,8 +27,8 @@
     "koa-bodyparser": "^3.1.0",
     "koa-convert": "^1.2.0",
     "koa-flash": "^1.0.0",
-    "koa-generic-session": "^1.11.1",
-    "koa-nunjucks-2": "^2.1.5",
+    "koa-generic-session": "^1.11.3",
+    "koa-nunjucks-2": "^2.1.6",
     "koa-redis": "^2.1.1",
     "koa-router": "^7.0.1",
     "koa-session": "^3.3.1",
@@ -70,6 +70,6 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
-    "webpack-hot-middleware": "^2.12.1"
+    "webpack-hot-middleware": "^2.12.2"
   }
 }
