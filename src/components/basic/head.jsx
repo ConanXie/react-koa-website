@@ -19,7 +19,8 @@ import { lightBlue500, lightBlue100 } from 'material-ui/styles/colors'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as BlogActions from '../../actions/blog'
+import * as blogActions from '../../actions/blog'
+import * as signActions from '../../actions/sign'
 
 import Login from './login'
 
@@ -54,20 +55,10 @@ class Head extends Component {
       open: false
     })
   }
-  getLoginStatus = (status) => {
-    this.setState({
-      status
-    })
-  }
   initBlogData = () => {
     const { blogList, getPagination } = this.props
     blogList()
     getPagination()
-  }
-  logout = () => {
-    this.setState({
-      status: false
-    })
   }
   constructor(props) {
     super(props)
@@ -84,7 +75,8 @@ class Head extends Component {
     minutes = minutes < 10 ? `0${minutes}` : minutes
     
     const { blogList, getPagination } = this.props
-    const { status } = this.state
+    const { status, logout } = this.props
+    console.log(this.props)
 
     let RightComponent
     if (!status) {
@@ -103,7 +95,7 @@ class Head extends Component {
             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
           >
-            <MenuItem primaryText="退出" onTouchTap={this.logout} />
+            <MenuItem primaryText="退出" onTouchTap={() => logout()} />
           </IconMenu>
         </div>
       )
@@ -164,18 +156,26 @@ class Head extends Component {
             </div>
           </div>
         </header>
-        <Login callbackParent={this.getLoginStatus} />
+        <Login />
       </Paper>
     )
   }
 }
 Head.propTypes = {
+  status: PropTypes.bool,
+  logout: PropTypes.func.isRequired,
   blogList: PropTypes.func.isRequired,
   getPagination: PropTypes.func.isRequired
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(BlogActions, dispatch)
+const mapStateToProps = (state) => {
+  const { status } = state.sign
+  return { status }
 }
 
-export default connect(null, mapDispatchToProps)(Head)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({ ...signActions, ...blogActions }, dispatch)
+  // return bindActionCreators(BlogActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Head)

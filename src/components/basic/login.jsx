@@ -8,7 +8,7 @@ import { pinkA200, redA400, green600 } from 'material-ui/styles/colors'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import * as loginActions from '../../actions/login'
+import * as signActions from '../../actions/sign'
 
 const style = {
   position: 'fixed',
@@ -71,13 +71,11 @@ class Login extends Component {
     }
   }
   componentWillReceiveProps(nextProps) {
-    const { callbackParent } = this.props
     /**
      * 登录成功表单隐藏
      */
     if (nextProps.status) {
       setTimeout(() => {
-        callbackParent(nextProps.status)
         this.handleClick()
       }, 800)
     }
@@ -125,19 +123,19 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  status: PropTypes.bool.isRequired,
+  status: PropTypes.bool,
   snackbar: PropTypes.object.isRequired,
   login: PropTypes.func.isRequired,
   closeSnackbar: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => {
-  const { status, snackbar } = state.login
+  const { status, snackbar } = state.sign
   return { status, snackbar }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(loginActions, dispatch)
+  return bindActionCreators(signActions, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
