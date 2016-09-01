@@ -2,7 +2,9 @@
 
 import koaRouter from 'koa-router'
 import fs from 'fs'
-const router = koaRouter()
+const router = new koaRouter({
+  prefix: '/api'
+})
 
 /**
  * mongodb
@@ -151,13 +153,26 @@ router.post('/login', async (ctx) => {
   } catch (e) {
     throw e
   }
-  /*if (!data.code) {
+  console.log(ctx.session)
+  if (!data.code) {
+    let session = ctx.session
     // 存储登录的session
-    ctx.session.user = req.user
-    console.log(ctx.session)
-  }*/
-  ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
+    session.user = req.user
+    console.log(session)
+  }
+  // ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
   ctx.body = data
+})
+
+/**
+ * 退出
+ */
+router.get('/logout', (ctx) => {
+  ctx.session = null
+  ctx.body = {
+    code: 0,
+    msg: '已退出'
+  }
 })
 
 router.get('/profits/:page', async (ctx) => {
