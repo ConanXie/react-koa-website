@@ -1,4 +1,5 @@
 export const LOG_IN = 'LOG_IN'
+export const LOG_OUT = 'LOG_OUT'
 export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR'
 
 export function login(userName, password) {
@@ -31,6 +32,7 @@ export function login(userName, password) {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
+      credentials: 'include',
       body: `user=${userName}&pw=${password}`
     })
     let data = await response.json()
@@ -53,6 +55,19 @@ export function closeSnackbar() {
     snackbar: {
       open: false,
       message: ''
+    }
+  }
+}
+
+export function logout() {
+  return async (dispatch) => {
+    const response = await fetch('/api/logout', { credentials: 'include' })
+    const data = await response.json()
+    if (!data.code) {
+      dispatch({
+        type: LOG_OUT,
+        status: false
+      })
     }
   }
 }
