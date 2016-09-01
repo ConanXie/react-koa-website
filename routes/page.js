@@ -21,19 +21,24 @@ import routes from '../src/routes'
  * 生成服务器端store和匹配routes
  */
 const storeAndRoutes = (ctx, state) => {
-  const store = createStore(reducer, state, applyMiddleware(thunk))
+  const sign = {
+    status: false,
+    snackbar: {
+      open: false,
+      message: ''
+    }
+  }
+  console.log(ctx.session)
+  if (ctx.session.user) {
+    sign.status = true
+  }
+  const combineState = {
+    ...state,
+    sign
+  }
+  console.log(combineState)
+  const store = createStore(reducer, combineState, applyMiddleware(thunk))
   // 匹配react-router
-  /*return new Promise((resolve, reject) => {
-    match({ routes, location: ctx.url }, (error, redirectLocation, renderProps) => {
-      const render = ctx.render('index', {
-        root: renderToString(<h1>123</h1>),
-        initialState: JSON.stringify(store.getState())
-      })
-      if (!error) {
-        resolve(render)
-      }
-    })
-  })*/
   match({ routes, location: ctx.url }, (error, redirectLocation, renderProps) => {
     /*ctx.render('index', {
       root: renderToString(
@@ -88,9 +93,9 @@ const storeAndRoutes = (ctx, state) => {
 const apiUrl = 'http://localhost:4000/api'
 
 router.get('/', async (ctx, next) => {
-  console.log(ctx.state)
-  let articles = await getArticles()
-  let counter = {
+  // console.log(ctx.session)
+  const articles = await getArticles()
+  const counter = {
     count: 100,
     value: 'haha',
     results: articles
@@ -98,11 +103,11 @@ router.get('/', async (ctx, next) => {
   storeAndRoutes(ctx, { counter })
 })
 
-router.get(['about', 'write'], async (ctx) => {
+router.get(['/about', '/write'], async (ctx) => {
   storeAndRoutes(ctx)
 })
 
-router.get(['blog', 'blog/page/:page'], async (ctx, next) => {
+router.get(['/blog', '/blog/page/:page'], async (ctx, next) => {
   let page = ctx.params.page || 1
   let list, pagination
   try {
@@ -120,11 +125,11 @@ router.get(['blog', 'blog/page/:page'], async (ctx, next) => {
   storeAndRoutes(ctx, { blog })
 })
 
-router.get('profit', async (ctx, next) => {
+router.get('/profit', async (ctx, next) => {
   storeAndRoutes(ctx)
 })
 
-router.get('404', async (ctx, next) => {
+router.get('/404', async (ctx, next) => {
   storeAndRoutes(ctx)
 })
 
