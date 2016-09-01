@@ -48,6 +48,7 @@ export function getData() {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
+      credentials: 'include',
       body: 'name=conan&author=谢杰'
     })
     let data = await response.json()
