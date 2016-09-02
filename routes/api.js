@@ -149,18 +149,14 @@ router.post('/login', async (ctx) => {
   let data = {}
   try {
     data = await login(req.user, req.pw)
-    console.log(data)
   } catch (e) {
     throw e
   }
-  console.log(ctx.session)
   if (!data.code) {
     let session = ctx.session
     // 存储登录的session
     session.user = req.user
-    console.log(session)
   }
-  // ctx.res.writeHead(200, { 'Content-Type': 'application/json' })
   ctx.body = data
 })
 

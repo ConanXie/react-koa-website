@@ -28,7 +28,6 @@ const storeAndRoutes = (ctx, state) => {
       message: ''
     }
   }
-  console.log(ctx.session)
   if (ctx.session.user) {
     sign.status = true
   }
@@ -36,7 +35,6 @@ const storeAndRoutes = (ctx, state) => {
     ...state,
     sign
   }
-  console.log(combineState)
   const store = createStore(reducer, combineState, applyMiddleware(thunk))
   // 匹配react-router
   match({ routes, location: ctx.url }, (error, redirectLocation, renderProps) => {
