@@ -11,7 +11,7 @@ import { Provider } from 'react-redux'
 import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux'
 
 import reducer from './reducers/index'
-import routes from './routes'
+import Routes from './Routes'
 
 let store
 if (window.__INITIAL_STATE__) {
@@ -39,7 +39,7 @@ if (typeof window !== 'undefined') {
 }
 render((
   <Provider store={store}>
-    <Router history={history} routes={routes} />
+    <Router history={history} routes={Routes} />
   </Provider>
 ), document.querySelector('#app'))
 

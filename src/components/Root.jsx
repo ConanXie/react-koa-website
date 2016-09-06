@@ -8,9 +8,9 @@ import Paper from 'material-ui/Paper'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
-import Head from './basic/head'
-import Login from './basic/login'
-import BackToTop from './basic/backtotop'
+import Head from './basic/Head'
+import Login from './basic/Login'
+import BackToTop from './basic/Backtotop'
 
 const muiTheme = getMuiTheme(null, {userAgent: 'all'})
 

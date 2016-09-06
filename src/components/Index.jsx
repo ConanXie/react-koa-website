@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 
-import Head from './basic/head'
-import Login from './basic/login'
-import BackToTop from './basic/backtotop'
+import Head from './basic/Head'
+import Login from './basic/Login'
+import BackToTop from './basic/Backtotop'
 
 class Index extends Component {
   render() {

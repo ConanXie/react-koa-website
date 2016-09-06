@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Aside from './blog/aside'
+import Aside from './blog/Aside'
 
 class Blog extends Component {
   render() {

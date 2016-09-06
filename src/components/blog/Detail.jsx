@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-import Aside from './blog/aside'
-import Article from './blog/article'
+import Aside from './blog/Aside'
+import Article from './blog/Article'
 
 class BlogDetail extends Component {
   componentDidMount() {

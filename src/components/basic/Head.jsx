@@ -22,7 +22,7 @@ import { connect } from 'react-redux'
 import * as blogActions from '../../actions/blog'
 import * as signActions from '../../actions/sign'
 
-import Login from './login'
+import Login from './Login'
 
 const style = {
   position: 'fixed',

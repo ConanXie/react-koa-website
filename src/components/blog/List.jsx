@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import Brief from './brief'
-import Pagination from './pagination'
+import Brief from './Brief'
+import Pagination from './Pagination'
 
 class List extends Component {
   render() {
