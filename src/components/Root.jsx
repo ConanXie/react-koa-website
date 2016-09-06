@@ -10,7 +10,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 import Head from './basic/Head'
 import Login from './basic/Login'
-import BackToTop from './basic/Backtotop'
+import BackToTop from './basic/BackToTop'
 
 const muiTheme = getMuiTheme(null, {userAgent: 'all'})
 
