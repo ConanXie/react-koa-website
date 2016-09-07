@@ -3,6 +3,7 @@ import { Paper } from 'material-ui'
 import TextField from 'material-ui/TextField'
 import FlatButton from 'material-ui/FlatButton'
 import Snackbar from 'material-ui/Snackbar'
+import CircularProgress from 'material-ui/CircularProgress'
 import { pinkA200, redA400, green600 } from 'material-ui/styles/colors'
 
 import { bindActionCreators } from 'redux'
@@ -102,6 +103,7 @@ class Login extends Component {
               onChange={this.watchPassword}
               style={inputStyle}
             /><br/>
+            <CircularProgress size={0.3} color={pinkA200} />
             <FlatButton
               label="登录"
               secondary={true}

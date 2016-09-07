@@ -133,7 +133,9 @@ router.post('/login', async (ctx) => {
                 reject(err)
               } else {
                 if (doc) {
-                  resolve({ code: 0, msg: '登录成功' })
+                  setTimeout(() => {
+                    resolve({ code: 0, msg: '登录成功' })
+                  }, 2000)
                 } else {
                   resolve({ code: 102, msg: '密码错误' })
                 }
