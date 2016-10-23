@@ -4,8 +4,8 @@ import { Router, Route, IndexRoute, Redirect } from 'react-router'
 
 import Root from './components/Root'
 import Index from './components/Index'
-import Blog from './components/Blog'
-import BlogList from './components/blog/List'
+import BlogList from './components/BlogList'
+// import BlogList from './components/blog/List'
 import BlogDetail from './components/blog/Article'
 import About from './components/About'
 import NotFound from './components/404'
@@ -17,9 +17,9 @@ const routes = (
   <div>
     <Route path="/" component={Root}>
       <IndexRoute component={Counter} />
-      <Route path="blog" component={Blog}>
+      <Route path="blog" component={BlogList}>
         <IndexRoute component={BlogList} />
-        <Route path="page/:page" component={BlogList} />
+        <Route path=":page" component={BlogList} />
         <Route path="detail/:id" component={BlogDetail} />
       </Route>
       <Route path="profit" component={Profit} />

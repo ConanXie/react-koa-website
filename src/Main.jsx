@@ -43,4 +43,16 @@ render((
   </Provider>
 ), document.querySelector('#app'))
 
+if (module.hot) {
+  module.hot.accept('./Routes', () => {
+    const NextRoutes = require('./Routes').default(store)
+    console.log(NextRoutes)
+    render((
+      <Provider store={store}>
+        <Router history={history} routes={NextRoutes} />
+      </Provider>
+    ), document.querySelector('#app'))
+  })
+}
+
 module.exports = store

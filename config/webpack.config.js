@@ -8,8 +8,9 @@ const publicPath = '/assets/'
 
 module.exports = {
   entry: [
+    'react-hot-loader/patch',
     'babel-polyfill',
-    'webpack/hot/dev-server',
+    'webpack/hot/only-dev-server',
     'webpack-hot-middleware/client?path=/__webpack_hmr',
     path.resolve(dir_src, 'main.jsx')
   ],
@@ -28,10 +29,10 @@ module.exports = {
     loaders: [{
       test: /src(\\|\/).+(\.jsx|\.js)?$/,
       exclude: /node_modules/,
-      loaders: ['react-hot', 'babel?presets[]=es2015&presets[]=react&presets[]=stage-0']
+      loaders: ['babel?presets[]=es2015&presets[]=react&presets[]=stage-0&plugins[]=react-hot-loader/babel']
     }, {
       test: /\.less$/,
-      loader: 'style!css!less'
+      loader: 'style!css?sourceMap!less'
     }]
   },
   plugins: [

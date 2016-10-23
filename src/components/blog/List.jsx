@@ -8,6 +8,7 @@ import Pagination from './Pagination'
 class List extends Component {
   render() {
     const { list } = this.props
+    console.log(this.props)
     return (
       <div>
         {list.map((value) => {

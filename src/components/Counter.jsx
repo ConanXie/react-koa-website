@@ -10,7 +10,7 @@ import ContentRemove from 'material-ui/svg-icons/content/remove'
 import { lightBlue500 } from 'material-ui/styles/colors'
 
 const style = {
-  margin: '20px 12px 10px 0'
+  margin: '30px 12px 10px 0'
 }
 class Counter extends Component {
   handleClick(e) {

@@ -22,8 +22,8 @@ class Root extends Component {
         <div>
           <Head title="conan" />
           <BackToTop />
-          {/*this.props.children*/}
-          <ReactCSSTransitionGroup
+          {this.props.children}
+          {/*<ReactCSSTransitionGroup
             component="div"
             className="page-wrapper"
             transitionName="example"
@@ -33,7 +33,7 @@ class Root extends Component {
             {cloneElement(children, {
               key: location.pathname
             })}
-          </ReactCSSTransitionGroup>
+          </ReactCSSTransitionGroup>*/}
         </div>
       </MuiThemeProvider>
     )
